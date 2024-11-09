@@ -1,13 +1,13 @@
 # Fdb version 4
-["biber main"] 1731190280.18672 "main.bcf" "main.bbl" "main" 1731192566.01611 0
-  "main.bcf" 1731192565.88686 107353 fb101cd60ca8bad4786736a2c9aa9b82 "pdflatex"
+["biber main"] 1731193543.78104 "main.bcf" "main.bbl" "main" 1731193545.41025 0
+  "main.bcf" 1731193545.33276 132527 64126dfe2a13e1dbbaf7e601c2505525 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1731192564.13997 "/home/pllima0909/Documents/Git/INF01017-Machine-Learning/Car-Fuel-Efficiency-Predictor/report/main.tex" "main.pdf" "main" 1731192566.01668 0
+["pdflatex"] 1731193544.35857 "/home/pllima0909/Documents/Git/INF01017-Machine-Learning/Car-Fuel-Efficiency-Predictor/report/main.tex" "main.pdf" "main" 1731193545.41064 0
   "/etc/texmf/web2c/texmf.cnf" 1728302084.72637 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/pllima0909/Documents/Git/INF01017-Machine-Learning/Car-Fuel-Efficiency-Predictor/report/main.tex" 1731192562.94489 3089 ee335a1af8bce62f1f2b883a153967de ""
+  "/home/pllima0909/Documents/Git/INF01017-Machine-Learning/Car-Fuel-Efficiency-Predictor/report/main.tex" 1731193540.9728 3106 8cf7890bbcae42f8c28435fdf09e6f18 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ectt1000.tfm" 1136768653 1536 06717a2b50de47d4087ac0e6cd759455 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -60,7 +60,12 @@
   "/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty" 1705352648 5319 2b738d02ce36ada6dcdd9534940db0ee ""
   "/usr/share/texlive/texmf-dist/tex/latex/base/report.cls" 1705352648 23203 f5d913095ece2233436f0e628619cd37 ""
   "/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo" 1705352648 8448 dbc0dbf4156c0bb9ba01a1c685d3bad0 ""
-  "/usr/share/texlive/texmf-dist/tex/latex/biblatex/bbx/numeric.bbx" 1609451401 1818 9ed166ac0a9204a8ebe450ca09db5dde ""
+  "/usr/share/texlive/texmf-dist/tex/latex/biblatex-apa/american-apa.lbx" 1679344277 15341 97bd08d7348d989673bff499328b308a ""
+  "/usr/share/texlive/texmf-dist/tex/latex/biblatex-apa/apa.bbx" 1679344277 68546 9e1a16021ee55f6bb5378029f145647b ""
+  "/usr/share/texlive/texmf-dist/tex/latex/biblatex-apa/apa.cbx" 1679344277 20499 0ad31db7b661b1a75fb75fe9aa337922 ""
+  "/usr/share/texlive/texmf-dist/tex/latex/biblatex-apa/apa.dbx" 1679344277 2676 4c4c5f7972322150712501515143ddd7 ""
+  "/usr/share/texlive/texmf-dist/tex/latex/biblatex-apa/english-apa.lbx" 1679344277 9938 c83babc77d4f40c7c3ebf42daaa0495c ""
+  "/usr/share/texlive/texmf-dist/tex/latex/biblatex-apa/portuguese-apa.lbx" 1679344277 10035 6d3ba425f64d70756238a19f80a637b1 ""
   "/usr/share/texlive/texmf-dist/tex/latex/biblatex/bbx/standard.bbx" 1609451401 25680 409c3f3d570418bc545e8065bebd0688 ""
   "/usr/share/texlive/texmf-dist/tex/latex/biblatex/biblatex.cfg" 1342308459 69 249fa6df04d948e51b6d5c67bea30c42 ""
   "/usr/share/texlive/texmf-dist/tex/latex/biblatex/biblatex.def" 1678141846 92527 8f6b3a677f74ea525477a813f33c4e65 ""
@@ -68,7 +73,7 @@
   "/usr/share/texlive/texmf-dist/tex/latex/biblatex/blx-case-expl3.sty" 1609451401 8433 72f8188742e7214b7068f345cd0287ac ""
   "/usr/share/texlive/texmf-dist/tex/latex/biblatex/blx-compat.def" 1643926307 13919 5426dbe90e723f089052b4e908b56ef9 ""
   "/usr/share/texlive/texmf-dist/tex/latex/biblatex/blx-dm.def" 1643926307 32455 8d3e554836db11aab80a8e11be62e1b1 ""
-  "/usr/share/texlive/texmf-dist/tex/latex/biblatex/cbx/numeric.cbx" 1678141846 4629 cda468e8a0b1cfa0f61872e171037a4b ""
+  "/usr/share/texlive/texmf-dist/tex/latex/biblatex/lbx/american.lbx" 1342308459 169 40f2892b6b9cee1ffa9c07b78605a5a1 ""
   "/usr/share/texlive/texmf-dist/tex/latex/biblatex/lbx/english.lbx" 1643926307 39965 48ce9ce3350aba9457f1020b1deba5cf ""
   "/usr/share/texlive/texmf-dist/tex/latex/biblatex/lbx/portuguese.lbx" 1643926307 30140 ba07c25f33f26ebef31c143652b4cac4 ""
   "/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty" 1696191071 56128 c2ccf1a29d78c33bc553880402e4fb9a ""
@@ -121,12 +126,12 @@
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1728302383 6831893 6b655a265572e85f89b940b2f9fc3736 ""
   "images/logos/INF.png" 1731186491.5603 15010 1abd8f9e244e530d3a1ab0c922b4a613 ""
   "images/logos/UFRGS.png" 1731186491.5803 88725 6440c8a13158bb4b7d2155d90ff2ae99 ""
-  "main.aux" 1731192565.88086 1002 12cd7109228967d2fd4757ceb070a5f9 "pdflatex"
-  "main.bbl" 1731190281.2847 466 ee04f40f768daeed26442158e95aba61 "biber main"
-  "main.out" 1731192565.88386 1078 a5b91abd3c85084084510693635cce29 "pdflatex"
-  "main.run.xml" 1731192565.88886 2338 bc4e4d191fc7d6cf8344f373806f71a7 "pdflatex"
-  "main.tex" 1731192562.94489 3089 ee335a1af8bce62f1f2b883a153967de ""
-  "main.toc" 1731192565.88886 478 72de3c7e62736363a55d6c2247233dca "pdflatex"
+  "main.aux" 1731193545.32976 1025 06eba979b91a9afb3455356f0b7c3158 "pdflatex"
+  "main.bbl" 1731193544.33277 466 ee04f40f768daeed26442158e95aba61 "biber main"
+  "main.out" 1731193545.33176 1078 a5b91abd3c85084084510693635cce29 "pdflatex"
+  "main.run.xml" 1731193545.33376 2498 c2863dbacdb03c72f8ca78ffab8d871a "pdflatex"
+  "main.tex" 1731193540.9728 3106 8cf7890bbcae42f8c28435fdf09e6f18 ""
+  "main.toc" 1731193545.33376 478 72de3c7e62736363a55d6c2247233dca "pdflatex"
   (generated)
   "main.aux"
   "main.bcf"
