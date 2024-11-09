@@ -25,6 +25,9 @@
 \usepackage{enumitem}
 \usepackage{soul}
 
+\usepackage[backend=biber]{biblatex}
+\addbibresource{reference.bib}
+
 % Set section numbering from 1.1
 \renewcommand{\thesection}{\arabic{section}.1}
 
@@ -73,5 +76,17 @@
         \tableofcontents
         \clearpage
         \addtocontents{toc}{\protect\thispagestyle{empty}}
+
+\section{Definição do Problema e Coleta de Dados}
+
+\section{Análise Exploratória e Pré-processamento dos Dados}
+
+\section{Abordagem, Algoritmos e Estratégias de Avaliação}
+
+\section{\textit{Spot-checking} de Algoritmos}
+
+\clearpage
+%\printbibliography
+\thispagestyle{empty}
 
 \end{document}
