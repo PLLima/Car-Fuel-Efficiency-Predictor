@@ -1,0 +1,77 @@
+\documentclass{report}
+
+% Language setting
+\usepackage[main=portuguese, english]{babel}
+\usepackage{csquotes}
+
+% Set page size and margins
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.5cm]{geometry}
+
+% Useful packages
+\usepackage{ulem}
+\usepackage{parskip}
+\usepackage{indentfirst}
+\usepackage{setspace}
+\usepackage{amsmath}
+\usepackage{array}
+
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{subfigure}
+\usepackage{titlesec}
+\usepackage[colorlinks=false, allbordercolors={0 0 0}, pdfborderstyle={/S/U/W 0.25}]{hyperref}
+\usepackage[hypcap=true]{caption}
+\usepackage{enumitem}
+\usepackage{soul}
+
+% Set section numbering from 1.1
+\renewcommand{\thesection}{\arabic{section}.1}
+
+\let\oldsection\section
+\renewcommand\section{\clearpage\oldsection}
+
+% Change section formatting
+\titleformat{\section}
+  {\fontsize{12}{15}\selectfont\bfseries}{\thesection}{1em}{}
+
+% Configure indentations
+\setlength{\parindent}{1.5cm}
+
+\begin{document}
+
+    \begin{titlepage}
+        \centering
+        
+        \LARGE {Universidade Federal do Rio Grande do Sul \\ Instituto de Informática}
+    
+        \begin{figure}[h!]
+        \centering
+        \subfigure
+        {\includegraphics[width=0.35\linewidth]{images/logos/UFRGS.png}}
+        \hspace{1cm}
+        \subfigure
+        {\includegraphics[width=0.35\linewidth]{images/logos/INF.png}}
+        \end{figure}
+    
+        \LARGE {INF01017 \\ Aprendizado de Máquina}
+        
+        \vfill
+        {\noindent\hrulefill \\
+        \bfseries \Huge{Trabalho Prático Final – Etapa 1} \\ \Large{Modelagem Preditiva com Aprendizado de Máquina} \\
+        \noindent\hrulefill}
+        
+        \vfill
+        {\LARGE Luís Filipe Martini Gastmann (00276150) \\ Pedro Lubaszewski Lima (00341810) \\ Vinícius Boff Alves (00335551) \\~\\ Turma U}
+    
+        \vfill
+        {\LARGE 9 de novembro de 2024}
+        
+    \end{titlepage}
+
+        \renewcommand{\contentsname}{Sumário}
+        \tableofcontents
+        \clearpage
+        \addtocontents{toc}{\protect\thispagestyle{empty}}
+
+\end{document}
