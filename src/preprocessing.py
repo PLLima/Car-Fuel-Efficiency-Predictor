@@ -1,10 +1,8 @@
-import pandas as pd
+def drop_atributes(df, atributes_to_drop):
+    return df.drop(columns=atributes_to_drop)
 
 def remove_instances_with_nan(df):
     return df.dropna()
-
-def drop_atributes(df, atributes_to_drop):
-    return df.drop(columns=atributes_to_drop)
 
 def filter_categories(df, categorical_features, threshold=10):
 # Replace less common categories with 'others'
@@ -17,5 +15,4 @@ def filter_categories(df, categorical_features, threshold=10):
         
         # Replace rare categories with 'others'
         df[feature] = df[feature].apply(lambda x: 'others' if x in rare_categories else x)
-
     return df
