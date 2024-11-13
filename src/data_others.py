@@ -3,7 +3,7 @@
 import pandas as pd
 
 # Load the data
-df = pd.read_csv('T1/Dados/car_data_original.csv')
+df = pd.read_csv('T1/Dados/car_data_no_electric_cars.csv')
 
 # List of categorical features to check
 categorical_features = ["class", "drive", "fuel_type", "make", "model", "transmission"]
@@ -23,6 +23,6 @@ for feature in categorical_features:
     df[feature] = df[feature].apply(lambda x: 'others' if x in rare_categories else x)
 
 # Save the modified DataFrame to a new CSV file
-df.to_csv('car_data_others.csv', index=False)
+df.to_csv('car_data_grouped_categories.csv', index=False)
 
 print("Processing complete. The new file has been saved as 'car_data_others.csv'.")
