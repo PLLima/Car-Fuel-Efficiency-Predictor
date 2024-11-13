@@ -3,6 +3,9 @@ import pandas as pd
 def remove_instances_with_nan(df):
     return df.dropna()
 
+def drop_atributes(df, atributes_to_drop):
+    return df.drop(columns=atributes_to_drop)
+
 def filter_categories(df, categorical_features, threshold=10):
 # Replace less common categories with 'others'
     for feature in categorical_features:
