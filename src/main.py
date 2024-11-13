@@ -23,15 +23,15 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 from sklearn.model_selection import train_test_split
 
 n_repeats = 5 # For split_tests (Linear_Regression)
-k = 9 # For Knn
+k = 9 # For k-nn
 plot_flag = True
 
 # Original not actually original -> have to test which methods work with NaN
 # Electric cars dont have some values, which causes errors in some models
 # Removed from original dataset
 data_cases = [
-    "original",
-    "others"
+    "no_electric_cars",
+    "grouped_categories",
 ]
 
 methods = [
@@ -39,7 +39,7 @@ methods = [
     "random_forest",
     "linear_regression",
     "neural_networks",
-    "svm"
+    "svm",
 ]
 
 for data_case in data_cases:

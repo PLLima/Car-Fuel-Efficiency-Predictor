@@ -127,7 +127,6 @@ city_mpg,class,combination_mpg,cylinders,displacement,drive,fuel_type,highway_mp
 28,compact car,31,4.0,1.6,fwd,gas,35,hyundai,veloster,a,2016
 27,compact car,30,4.0,1.6,fwd,gas,34,hyundai,veloster,m,2016
 24,midsize car,27,4.0,2.0,fwd,gas,32,hyundai,elantra gt,m,2016
-126,subcompact car,112,,,rwd,electricity,99,mitsubishi,i-miev,a,2016
 18,two seater,21,6.0,3.0,awd,gas,26,jaguar,f-type s awd coupe,a,2016
 18,two seater,21,6.0,3.0,awd,gas,26,jaguar,f-type s awd convertible,a,2016
 25,compact car,29,4.0,2.4,fwd,gas,35,acura,ilx,a,2016
@@ -174,7 +173,6 @@ city_mpg,class,combination_mpg,cylinders,displacement,drive,fuel_type,highway_mp
 33,compact car,36,3.0,1.2,fwd,gas,41,mitsubishi,mirage,m,2017
 37,compact car,39,3.0,1.2,fwd,gas,43,mitsubishi,mirage,a,2017
 18,minivan,22,6.0,3.6,fwd,gas,28,chrysler,pacifica,a,2017
-121,subcompact car,112,,,rwd,electricity,102,mitsubishi,i-miev,a,2017
 14,two seater,17,10.0,5.2,awd,gas,22,audi,r8,a,2017
 14,two seater,17,10.0,5.2,awd,gas,22,audi,r8 spyder,a,2017
 24,compact car,27,4.0,2.0,awd,gas,31,audi,a4 quattro,a,2017
