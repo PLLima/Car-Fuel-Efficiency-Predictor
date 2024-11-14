@@ -1,0 +1,104 @@
+\documentclass{report}
+
+% Language setting
+\usepackage[main=portuguese, english]{babel}
+\usepackage{csquotes}
+
+% Set page size and margins
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.5cm]{geometry}
+
+% Useful packages
+\usepackage{ulem}
+\usepackage{parskip}
+\usepackage{indentfirst}
+\usepackage{setspace}
+\usepackage{amsmath}
+\usepackage{array}
+
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{subfigure}
+\usepackage{titlesec}
+\usepackage[colorlinks=false, allbordercolors={0 0 0}, pdfborderstyle={/S/U/W 0.25}]{hyperref}
+\usepackage[hypcap=true]{caption}
+\usepackage{enumitem}
+\usepackage{soul}
+
+\usepackage[
+  backend=biber,
+  style=apa,]{biblatex}
+\addbibresource{reference.bib}
+
+% Set section numbering from 1.1
+\renewcommand{\thesection}{\arabic{section}.1}
+
+\let\oldsection\section
+\renewcommand\section{\clearpage\oldsection}
+
+% Change section formatting
+\titleformat{\section}
+  {\fontsize{12}{15}\selectfont\bfseries}{\thesection}{1em}{}
+
+% Configure indentations
+\setlength{\parindent}{1.5cm}
+
+\begin{document}
+
+    \begin{titlepage}
+        \centering
+        
+        \LARGE {Universidade Federal do Rio Grande do Sul \\ Instituto de Informática}
+    
+        \begin{figure}[h!]
+        \centering
+        \subfigure
+        {\includegraphics[width=0.35\linewidth]{images/logos/UFRGS.png}}
+        \hspace{1cm}
+        \subfigure
+        {\includegraphics[width=0.35\linewidth]{images/logos/INF.png}}
+        \end{figure}
+    
+        \LARGE {INF01017 \\ Aprendizado de Máquina}
+        
+        \vfill
+        {\noindent\hrulefill \\
+        \bfseries \Huge{Atividade Prática 06} \\ \LARGE{Descrição dos Dados e Análise de Necessidades de Pré-processamento} \\
+        \noindent\hrulefill}
+        
+        \vfill
+        {\LARGE Luís Filipe Martini Gastmann (00276150) \\ Pedro Lubaszewski Lima (00341810) \\ Vinícius Boff Alves (00335551) \\~\\ Turma U}
+    
+        \vfill
+        {\LARGE 9 de novembro de 2024}
+        
+    \end{titlepage}
+
+        \renewcommand{\contentsname}{Sumário}
+        \tableofcontents
+        \clearpage
+        \addtocontents{toc}{\protect\thispagestyle{empty}}
+
+\section{Definição do Problema e Coleta de Dados}
+
+O objetivo deste trabalho é prever o consumo médio de combustível de um carro através de algumas das suas características e origens de fabricação.
+Alguns atributos das instâncias são a marca, a quantidade de cilíndros, o porte do veículo etc.
+
+O conjunto de dados utilizado para desenvolver este trabalho foi obtido da seguinte página do Kaggle:
+\href{https://www.kaggle.com/datasets/arslaan5/explore-car-performance-fuel-efficiency-data}{Explore Car Performance: Fuel Efficiency Data}.
+Essa tarefa contará com diversas técnicas de preparação dos dados para posteriormente iniciar a seleção e
+avaliação de modelos para essa tarefa.
+
+\section{Análise Exploratória e Pré-processamento dos Dados}
+
+Este \textit{dataset} possui 550 instâncias, com 11 atributos preditores e 1 atributo alvo. Esse último torna a tarefa dos modelos em regressão,
+visto que o objetivo aqui é prever o consumo médio de combustível de carros.
+
+Dos atributos preditores, observa-se que há 5 atributos numéricos (\textit{city mpg}, \textit{cylinders}, \textit{displacement}, \textit{highway mpg} e \textit{year}).
+Além deles, os 5 atributos restantes são categóricos: \textit{class}, \textit{drive}, \textit{fuel type}, \textit{make}, \textit{model} e \textit{transmission}.
+
+\clearpage
+%\printbibliography
+\thispagestyle{empty}
+
+\end{document}
