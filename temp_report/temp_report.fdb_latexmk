@@ -1,14 +1,14 @@
 # Fdb version 4
-["biber temp_report"] 0 "temp_report.bcf" "temp_report.bbl" "temp_report" 1731625002.4651 0
+["biber temp_report"] 0 "temp_report.bcf" "temp_report.bbl" "temp_report" 1731636739.41972 0
   "reference.bib" 0 -1 0 ""
   "temp_report.bcf" 0 -1 0 "pdflatex"
   (generated)
   "temp_report.bbl"
   "temp_report.blg"
   (rewritten before read)
-["pdflatex"] 1731625001.4376 "/home/pllima0909/Documents/Git/INF01017-Machine-Learning/Car-Fuel-Efficiency-Predictor/temp_report/temp_report.tex" "temp_report.pdf" "temp_report" 1731625002.46548 0
+["pdflatex"] 1731636738.25794 "/home/pllima0909/Documents/Git/INF01017-Machine-Learning/Car-Fuel-Efficiency-Predictor/temp_report/temp_report.tex" "temp_report.pdf" "temp_report" 1731636739.42012 0
   "/etc/texmf/web2c/texmf.cnf" 1728302084.72637 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/pllima0909/Documents/Git/INF01017-Machine-Learning/Car-Fuel-Efficiency-Predictor/temp_report/temp_report.tex" 1731625001.24037 3578 0756c47d136ea15a15c7f5fc0b0aeb00 ""
+  "/home/pllima0909/Documents/Git/INF01017-Machine-Learning/Car-Fuel-Efficiency-Predictor/temp_report/temp_report.tex" 1731636738.06371 7105 0d673742ccc0318f607e86147a44d856 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ectt1000.tfm" 1136768653 1536 06717a2b50de47d4087ac0e6cd759455 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -123,14 +123,17 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1728302368.98316 165012 f177baa1c39a3ebd62c3096a43521a0d ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1728302383 6831893 6b655a265572e85f89b940b2f9fc3736 ""
-  "images/logos/INF.png" 1731619321.15945 15010 1abd8f9e244e530d3a1ab0c922b4a613 ""
-  "images/logos/UFRGS.png" 1731619321.16245 88725 6440c8a13158bb4b7d2155d90ff2ae99 ""
-  "temp_report.aux" 1731625002.37753 688 7fbfc1da7c9791c35c35eb41dc23f79c "pdflatex"
+  "images/logos/INF.png" 1731625127.62653 15010 1abd8f9e244e530d3a1ab0c922b4a613 ""
+  "images/logos/UFRGS.png" 1731625127.62653 88725 6440c8a13158bb4b7d2155d90ff2ae99 ""
+  "images/plots/classes_dist.png" 1731635371.41431 56089 e0b87bfa083039c063bf1b9de40b1f6c ""
+  "images/plots/combination_dist.png" 1731635371.42531 34042 4d88afe18bff6d47bf94c100f533372e ""
+  "images/plots/num_heatmap.png" 1731635371.42931 41360 dffc5e8f738bc4383a82acbe4686b7fc ""
+  "temp_report.aux" 1731636739.33464 1544 c85e00d428e15f48d13f7ca8332c3fab "pdflatex"
   "temp_report.bbl" 0 -1 0 "biber temp_report"
-  "temp_report.out" 1731625002.37953 583 b9c8ae598d4bbc7e5cf7814669df2072 "pdflatex"
-  "temp_report.run.xml" 1731625002.38153 2547 78130aeaea6187178b6decab50eff1c9 "pdflatex"
-  "temp_report.tex" 1731625001.24037 3578 0756c47d136ea15a15c7f5fc0b0aeb00 ""
-  "temp_report.toc" 1731625002.38153 270 50143128fc4b2261f0f5794b204f789a "pdflatex"
+  "temp_report.out" 1731636739.33664 583 b9c8ae598d4bbc7e5cf7814669df2072 "pdflatex"
+  "temp_report.run.xml" 1731636739.33864 2547 78130aeaea6187178b6decab50eff1c9 "pdflatex"
+  "temp_report.tex" 1731636738.06371 7105 0d673742ccc0318f607e86147a44d856 ""
+  "temp_report.toc" 1731636739.33864 270 50143128fc4b2261f0f5794b204f789a "pdflatex"
   (generated)
   "temp_report.aux"
   "temp_report.bcf"

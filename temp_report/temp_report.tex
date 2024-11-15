@@ -92,15 +92,52 @@ avaliação de modelos para essa tarefa.
 \section{Análise Exploratória e Pré-processamento dos Dados}
 
 Este \textit{dataset} possui 550 instâncias, com 11 atributos preditores e 1 atributo alvo. Esse último torna a tarefa dos modelos em regressão,
-visto que o objetivo aqui é prever o consumo médio de combustível de carros.
+visto que o objetivo aqui é prever o consumo médio de combustível de carros. No conjunto de dados, esse atributo predito se chama \textit{combination mpg}.
 
 Dos atributos preditores, observa-se que há 5 atributos numéricos (\textit{city mpg}, \textit{cylinders}, \textit{displacement}, \textit{highway mpg} e \textit{year}).
 Além deles, os 6 atributos restantes são categóricos: \textit{class}, \textit{drive}, \textit{fuel type}, \textit{make}, \textit{model} e \textit{transmission}.
-Para os atributos categóricos será utilizada a codificação One Hot Encodeding.
+Com essa observação, já é previsto que será necessário fazer a codificação dos atributos categóricos e a normalização dos atributos numéricos. Para converter os atributos
+categóricos em númericos, como são todos categoriais sem ordem estabelecida, será utilizada a codificação \textit{One-hot Encoding}. É claro que isso aumenta a dimensionalidade
+do problema. Por conta disso, ainda será avaliado se serão necessárias medidas, como PCA, para reduzir a quantidade de atributos. Além disso, antes dessas conversões, o grupo
+decidiu abandonar os atributos de \textit{city mpg} e \textit{highway mpg} por facilitarem demais o trabalho do preditor, visto que o atributo alvo, \textit{combination mpg},
+pode ser calculado diretamente com esses dois atributos, algo que tornaria o modelo menos relevante. Se não for possível atingir uma métrica de qualidade satisfatória, alguma
+dessas características pode ser reintroduzida no conjunto de dados. Portanto, o conjunto de dados acabou com 3 atributos numéricos normalizados e 6 atributos categóricos codificados.
 
-Um dos problemas encontrados até o momento foi a possibilidade de não ser visto algum modelo de carro (model) no treinamento. 
+Em relação a outras características das \textit{features} do problema, criou-se alguns gráficos para analisar correlações e distribuições dos gráficos. A seguir, o histograma de
+do atributo alvo pelo número de veículos:
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=\linewidth]{images/plots/combination_dist.png}
+  \caption{\label{img:combination_dist} Histograma de Consumo Médio}
+\end{figure}
+
+Nesse gráfico, percebe-se que a maioria dos modelos tem consumo medio de combustível entre 20 e 30 mpg. Portanto, isso pode ser útil caso o grupo necessite realizar a remoção de \textit{outliers}
+e também é problemático pois não há muitas instâncias com consumo acima de 35 mpg, tornando os modelos mais fracos nas predições com essa grandeza de consumo.
+
+\clearpage
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=\linewidth]{images/plots/classes_dist.png}
+  \caption{\label{img:classes_dist} Distribuição de Classes de Veículos}
+\end{figure}
+
+Há diversas classes de veículos diferentes, com as mais diversas proporções. Por conta disso, adotar-se-á a política de agrupar essas classes e outros atributos
+categoriais em uma classe chamada \textit{others} quando a quantidade de instâncias dela no conjunto de treinamento for insignificante para melhorar a generalização do modelo.
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=\linewidth]{images/plots/num_heatmap.png}
+  \caption{\label{img:num_heatmat} \textit{Heatmap} de Correlações entre Atributos Numéricos}
+\end{figure}
+
+No diagrama acima, são observadas as correlações dos atributos numéricos e do atributo alvo. Esse mapa foi feito através da Correlação de Pearson de cada um dos atributos.
+Nele, é perceptível que bem possivelmente possa ser removido o atributo \textit{cylinders} ou (exclusivo) o atributo \textit{displacement}, visto que eles apresentam alto
+índice de correlação, tornando a utilização dos dois redundante para os modelos.
+
+Um outro problema encontrado consiste na possibilidade de não ser visto algum modelo de carro (\textit{model}) no treinamento. 
 Isso pode acontecer pois há uma quantidade muito grande de modelos diferentes, alguns com poucas instâncias.
-Para solucionar esse problema nós "forçamos" a ter pelo menos uma instância de cada modelo no conjunto de treinamento.
+Para solucionar esse problema, ``forçou-se" a haver pelo menos uma instância de cada modelo de veículo no conjunto de treinamento.
 
 \clearpage
 %\printbibliography
