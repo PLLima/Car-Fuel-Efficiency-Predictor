@@ -95,7 +95,12 @@ Este \textit{dataset} possui 550 instâncias, com 11 atributos preditores e 1 at
 visto que o objetivo aqui é prever o consumo médio de combustível de carros.
 
 Dos atributos preditores, observa-se que há 5 atributos numéricos (\textit{city mpg}, \textit{cylinders}, \textit{displacement}, \textit{highway mpg} e \textit{year}).
-Além deles, os 5 atributos restantes são categóricos: \textit{class}, \textit{drive}, \textit{fuel type}, \textit{make}, \textit{model} e \textit{transmission}.
+Além deles, os 6 atributos restantes são categóricos: \textit{class}, \textit{drive}, \textit{fuel type}, \textit{make}, \textit{model} e \textit{transmission}.
+Para os atributos categóricos será utilizada a codificação One Hot Encodeding.
+
+Um dos problemas encontrados até o momento foi a possibilidade de não ser visto algum modelo de carro (model) no treinamento. 
+Isso pode acontecer pois há uma quantidade muito grande de modelos diferentes, alguns com poucas instâncias.
+Para solucionar esse problema nós "forçamos" a ter pelo menos uma instância de cada modelo no conjunto de treinamento.
 
 \clearpage
 %\printbibliography
