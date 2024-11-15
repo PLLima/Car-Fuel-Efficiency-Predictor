@@ -151,9 +151,9 @@ for data_case in data_cases:
             # Fitting the pipeline
             pipe.fit(X_train, y_train)
 
-            # Previsão e avaliação
+            # Prediction and evaluation
             y_pred = pipe.predict(X_test)
-            #all_predictions.append(y_pred)
+            # all_predictions.append(y_pred)
 
             if plot_flag:
                 plt.figure(figsize=(10, 6))
