@@ -1,13 +1,21 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-def plot_histogram(dataset, atribute, title, description, filename):
+# def plot_histogram(dataset, atribute, title, description, filename):
+#     plt.figure(figsize=(10, 6))
+#     sns.histplot(dataset[atribute], kde=True, color='skyblue')
+#     plt.xlabel(description)
+#     plt.ylabel('Número de Instâncias')
+#     plt.title(title)
+#     plt.savefig(f'plots/histograms/{filename}.png')
+
+def plot_violinplot(dataset, atribute, title, description, filename):
     plt.figure(figsize=(10, 6))
-    sns.histplot(dataset[atribute], kde=True, color='skyblue')
+    sns.violinplot(dataset[atribute], orient='h', color='skyblue')
     plt.xlabel(description)
     plt.ylabel('Número de Instâncias')
     plt.title(title)
-    plt.savefig(f'plots/{filename}_histogram.png')
+    plt.savefig(f'plots/violin_plots/{filename}.png')
 
 def plot_piechart(dataset, atribute, title, filename):
     plt.figure(figsize=(10, 6))
@@ -15,7 +23,7 @@ def plot_piechart(dataset, atribute, title, filename):
     plt.pie(counts, labels=counts.index, 
             autopct='%1.1f%%', startangle=140, colors=sns.color_palette('pastel'))
     plt.title(title)
-    plt.savefig(f'plots/{filename}_piechart.png')
+    plt.savefig(f'plots/pie_charts/{filename}.png')
 
 def plot(method, y_test, y_pred):
     plt.figure(figsize=(10, 6))
