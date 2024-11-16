@@ -1,4 +1,13 @@
 import matplotlib.pyplot as plt
+import seaborn as sns
+
+def plot_histogram(dataset, atribute, title, description, filename):
+    plt.figure(figsize=(10, 6))
+    sns.histplot(dataset[atribute], kde=True, color='skyblue')
+    plt.xlabel(description)
+    plt.ylabel('Número de Instâncias')
+    plt.title(title)
+    plt.savefig(f'plots/{filename}_histogram.png')
 
 def plot(method, y_test, y_pred):
     plt.figure(figsize=(10, 6))
