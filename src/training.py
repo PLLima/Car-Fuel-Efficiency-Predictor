@@ -25,13 +25,13 @@ import preprocessing as pre
 import plots
 
 
-def train(n_repeats, val_size, X, y, X_train_mandatory, y_train_mandatory, Ksplit, method, k, plot_flag):
+def train(n_repeats, Ksplit, k, plot_flag, X_train, y_train, X_train_mandatory, y_train_mandatory, val_size, method):
     mae_total = 0
     mse_total = 0
     all_predictions = []  # List to store predictions for each split
     for split_random_state in range(0, n_repeats):
         # Separate validation data and the remaining instances
-        X_train, X_val, y_train, y_val  = train_test_split(X, y, test_size=val_size, random_state=split_random_state)
+        #X_train, X_val, y_train, y_val  = train_test_split(X, y, test_size=val_size)
         # Split the remaining instances in Ksplit parts
         kf = KFold(n_splits=Ksplit, shuffle=True)
         for train_index, test_index in kf.split(X_train):
@@ -63,11 +63,11 @@ def train(n_repeats, val_size, X, y, X_train_mandatory, y_train_mandatory, Kspli
                 case "knn":
                     model = KNeighborsClassifier(n_neighbors=k)
                 case "random_forest":
-                    model = RandomForestRegressor(max_depth=6, random_state=split_random_state)
+                    model = RandomForestRegressor(max_depth=6)
                 case "linear_regression":
                     model = LinearRegression()
                 case "neural_networks":
-                    model = MLPRegressor(random_state=split_random_state, max_iter=2500)
+                    model = MLPRegressor(max_iter=2500)
                 case "svm":
                     model = SVR(C=1.0, epsilon=0.2)
             # Pipeline applies the preprocessed dataset to the model for fitting
