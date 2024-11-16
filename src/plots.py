@@ -9,6 +9,14 @@ def plot_histogram(dataset, atribute, title, description, filename):
     plt.title(title)
     plt.savefig(f'plots/{filename}_histogram.png')
 
+def plot_piechart(dataset, atribute, title, filename):
+    plt.figure(figsize=(10, 6))
+    counts = dataset[atribute].value_counts()
+    plt.pie(counts, labels=counts.index, 
+            autopct='%1.1f%%', startangle=140, colors=sns.color_palette('pastel'))
+    plt.title(title)
+    plt.savefig(f'plots/{filename}_piechart.png')
+
 def plot(method, y_test, y_pred):
     plt.figure(figsize=(10, 6))
     plt.scatter(y_test, y_pred, color='blue', alpha=0.6, label='Average Predicted vs Actual')
