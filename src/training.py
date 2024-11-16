@@ -25,7 +25,7 @@ import preprocessing as pre
 import plots
 
 
-def train(n_repeats, Ksplit, k, plot_flag, X_train, y_train, X_train_mandatory, y_train_mandatory, val_size, method):
+def train(n_repeats, Ksplit, k, plot_flag, X_train, y_train, X_train_mandatory, y_train_mandatory, method):
     mae_total = 0
     mse_total = 0
     all_predictions = []  # List to store predictions for each split
@@ -35,8 +35,8 @@ def train(n_repeats, Ksplit, k, plot_flag, X_train, y_train, X_train_mandatory, 
         # Split the remaining instances in Ksplit parts
         kf = KFold(n_splits=Ksplit, shuffle=True)
         for train_index, test_index in kf.split(X_train):
-            X_train, X_test = X_train.iloc[train_index], X_train.iloc[test_index]
-            y_train, y_test = y_train.iloc[train_index], y_train.iloc[test_index]
+            X_train, X_val = X_train.iloc[train_index], X_train.iloc[test_index]
+            y_train, y_val = y_train.iloc[train_index], y_train.iloc[test_index]
             # If no_electric_cars, join the forced test_case with the random test_case
             # Concatanate the mandatory and training sets
             X_train = pd.concat([X_train_mandatory, X_train])
@@ -80,14 +80,14 @@ def train(n_repeats, Ksplit, k, plot_flag, X_train, y_train, X_train_mandatory, 
             pipe.fit(X_train, y_train)
 
             # Prediction and evaluation
-            y_pred = pipe.predict(X_test)
+            y_pred = pipe.predict(X_val)
             # all_predictions.append(y_pred)
 
             if plot_flag:
-                plots.plot(method, y_test, y_pred)
+                plots.plot(method, y_val, y_pred)
 
-            mae = mean_absolute_error(y_test, y_pred)
-            mse = mean_squared_error(y_test, y_pred)
+            mae = mean_absolute_error(y_val, y_pred)
+            mse = mean_squared_error(y_val, y_pred)
             mae_total += mae
             mse_total += mse
 
