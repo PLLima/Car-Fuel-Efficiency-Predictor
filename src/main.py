@@ -43,7 +43,7 @@ methods = [
 ]
 
 for data_case in data_cases:
-    test_size = 0.1
+    val_size = 0.1
     df = pd.read_csv(f'src/data/car_data_{data_case}.csv', delimiter=',')
     # Variable chosen to be predicted : combination_mpg
     # Dropped city_mpg and highway_mpg -> combination_mpg is a combination of the two
@@ -82,9 +82,9 @@ for data_case in data_cases:
     X = df_filtered.drop(columns=["combination_mpg"])
     y = df_filtered["combination_mpg"]
 
-    ##################################################################################################
-    ###### Forcing at least one instance of every category to appear in the fossil_fuel dataset ######
-    ##################################################################################################
+    ###############################################################################################
+    ###### Forcing the unic instances of every category to appear in the fossil_fuel dataset ######
+    ###############################################################################################
     # As in no_electric_cars, there isnt any strategy for dealing with non represented instances
     # during the testing phase, we force every instance to appear at least once in the training case
     if data_case == "no_electric_cars":
@@ -99,25 +99,27 @@ for data_case in data_cases:
         train_indices = list(train_indices)
         X_train_mandatory = X.loc[train_indices]
         y_train_mandatory = y.loc[train_indices]
-
+        # Put the unic instances in mandatory and take them out of X and y
         X = X.drop(train_indices)
         y = y.drop(train_indices)
-        
-        test_size = test_size * (len(X) + len(X_train_mandatory)) / len(X)
+        # Calculate the new test_size
+        # No longer necessary, since the test size is now determine by Ksplit
+        # test_size = test_size * (len(X) + len(X_train_mandatory)) / len(X)
 
     for method in methods:
         mae_total = 0
         mse_total = 0
         all_predictions = []  # List to store predictions for each split
         for split_random_state in range(0, n_repeats):
-            #X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=split_random_state)
+            # Separate validation data and the remaining instances
+            X_train, X_val, y_train, y_val  = train_test_split(X, y, test_size=val_size, random_state=split_random_state)
+            # Split the remaining instances in Ksplit parts
             kf = KFold(n_splits=Ksplit, shuffle=True, random_state=split_random_state)
-            for train_index, test_index in kf.split(X):
-                X_train, X_test = X.iloc[train_index], X.iloc[test_index]
-                y_train, y_test = y.iloc[train_index], y.iloc[test_index]
-                strat_size = len(y_test) / len(y_train)
-                X_train, X_val, y_train, y_val  = train_test_split(X_train, y_train, test_size=strat_size, random_state=split_random_state)
+            for train_index, test_index in kf.split(X_train):
+                X_train, X_test = X_train.iloc[train_index], X_train.iloc[test_index]
+                y_train, y_test = y_train.iloc[train_index], y_train.iloc[test_index]
                 # If no_electric_cars, join the forced test_case with the random test_case
+                # Concatanate the mandatory and training sets
                 if data_case == "no_electric_cars":
                     X_train = pd.concat([X_train_mandatory, X_train])
                     y_train = pd.concat([y_train_mandatory, y_train])
