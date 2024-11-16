@@ -25,7 +25,8 @@ from sklearn.model_selection import train_test_split
 n_repeats = 1
 k = 9 # K for Knn
 Ksplit = 10
-plot_flag = False  
+plot_flag = False
+split_random_state = 0
 
 # Electric cars dont have some values, which causes errors in some models
 # Removed from datasets
@@ -110,76 +111,65 @@ for data_case in data_cases:
         mae_total = 0
         mse_total = 0
         all_predictions = []  # List to store predictions for each split
-        for split_random_state in range(0, n_repeats):
-            # Separate validation data and the remaining instances
-            X_train, X_val, y_train, y_val  = train_test_split(X, y, test_size=val_size, random_state=split_random_state)
-            # Split the remaining instances in Ksplit parts
-            kf = KFold(n_splits=Ksplit, shuffle=True, random_state=split_random_state)
-            for train_index, test_index in kf.split(X_train):
-                X_train, X_test = X_train.iloc[train_index], X_train.iloc[test_index]
-                y_train, y_test = y_train.iloc[train_index], y_train.iloc[test_index]
-                # If no_electric_cars, join the forced test_case with the random test_case
-                # Concatanate the mandatory and training sets
-                if data_case == "no_electric_cars":
-                    X_train = pd.concat([X_train_mandatory, X_train])
-                    y_train = pd.concat([y_train_mandatory, y_train])
+        #for split_random_state in range(0, n_repeats):
+        # Separate validation data and the remaining instances
+        X_train, X_val, y_train, y_val  = train_test_split(X, y, test_size=val_size, random_state=split_random_state)
+        # Split the remaining instances in Ksplit parts
+        kf = KFold(n_splits=Ksplit, shuffle=True, random_state=split_random_state)
+        for train_index, test_index in kf.split(X_train):
+            X_train, X_test = X_train.iloc[train_index], X_train.iloc[test_index]
+            y_train, y_test = y_train.iloc[train_index], y_train.iloc[test_index]
+            # If no_electric_cars, join the forced test_case with the random test_case
+            # Concatanate the mandatory and training sets
+            if data_case == "no_electric_cars":
+                X_train = pd.concat([X_train_mandatory, X_train])
+                y_train = pd.concat([y_train_mandatory, y_train])
 
-                # Preprocessing is sensitive to type
-                # Separate analyzed features into numerical and categorical
-                # As to apply preprocessing only to valid features
-                numerical_features = X_train.select_dtypes(include=['int64', 'float64']).columns
-                categorical_features = X_train.select_dtypes(include=['object', 'bool']).columns
+            # Preprocessing is sensitive to type
+            # Separate analyzed features into numerical and categorical
+            # As to apply preprocessing only to valid features
+            numerical_features = X_train.select_dtypes(include=['int64', 'float64']).columns
+            categorical_features = X_train.select_dtypes(include=['object', 'bool']).columns
 
-                # ColumnTransformer applies preprocessing patterns e.g. StandardScaler() and
-                # OneHotEncoder() to groups, e.g. numerical_features and categorical_features
-                # Preprocessor will be applied to every dataset
-                preprocessor = ColumnTransformer([
-                    #("num", StandardScaler(), numerical_features),
-                    #("cat", OneHotEncoder(), categorical_features)
-                    #("num", PolynomialFeatures(degree=2, include_bias=False), numerical_features),
-                    ("num", StandardScaler(), numerical_features),
-                    ("cat", OneHotEncoder(), categorical_features)
-                ])
-                # Select model and configuration for use in the pipeline
-                match method:
-                    case "knn":
-                        model = KNeighborsClassifier(n_neighbors=k)
-                    case "random_forest":
-                        model = RandomForestRegressor(max_depth=6, random_state=split_random_state)
-                    case "linear_regression":
-                        model = LinearRegression()
-                    case "neural_networks":
-                        model = MLPRegressor(random_state=split_random_state, max_iter=2500)
-                    case "svm":
-                        model = SVR(C=1.0, epsilon=0.2)
-                # Pipeline applies the preprocessed dataset to the model for fitting
-                pipe = Pipeline([
-                    ("preprocessor", preprocessor),
-                    ("regressor", model)
-                ])
+            # ColumnTransformer applies preprocessing patterns e.g. StandardScaler() and
+            # OneHotEncoder() to groups, e.g. numerical_features and categorical_features
+            # Preprocessor will be applied to every dataset
+            preprocessor = ColumnTransformer([
+                #("num", StandardScaler(), numerical_features),
+                #("cat", OneHotEncoder(), categorical_features)
+                #("num", PolynomialFeatures(degree=2, include_bias=False), numerical_features),
+                ("num", StandardScaler(), numerical_features),
+                ("cat", OneHotEncoder(), categorical_features)
+            ])
+            # Select model and configuration for use in the pipeline
+            match method:
+                case "knn":
+                    model = KNeighborsClassifier(n_neighbors=k)
+                case "random_forest":
+                    model = RandomForestRegressor(max_depth=6, random_state=split_random_state)
+                case "linear_regression":
+                    model = LinearRegression()
+                case "neural_networks":
+                    model = MLPRegressor(random_state=split_random_state, max_iter=2500)
+                case "svm":
+                    model = SVR(C=1.0, epsilon=0.2)
+            # Pipeline applies the preprocessed dataset to the model for fitting
+            pipe = Pipeline([
+                ("preprocessor", preprocessor),
+                ("regressor", model)
+            ])
 
-                # Fitting the pipeline
-                pipe.fit(X_train, y_train)
+            # Fitting the pipeline
+            pipe.fit(X_train, y_train)
 
-                # Prediction and evaluation
-                y_pred = pipe.predict(X_test)
-                # all_predictions.append(y_pred)
+            # Prediction and evaluation
+            y_pred = pipe.predict(X_test)
+            # all_predictions.append(y_pred)
 
-                if plot_flag:
-                    plt.figure(figsize=(10, 6))
-                    plt.scatter(y_test, y_pred, color='blue', alpha=0.6, label='Average Predicted vs Actual')
-                    plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 'k--', lw=2, label='Ideal Fit Line')
-                    plt.xlabel('Actual Combination MPG')
-                    plt.ylabel('Average Predicted Combination MPG')
-                    plt.title(f'{method.upper()} Model: Average Predicted vs Actual Combination MPG')
-                    plt.legend()
-                    plt.grid(True)
-                    plt.savefig(f'src/plots/{method}_{data_case}_actual_vs_predicted.png')
-
-                mae = mean_absolute_error(y_test, y_pred)
-                mse = mean_squared_error(y_test, y_pred)
-                mae_total += mae
-                mse_total += mse
+            mae = mean_absolute_error(y_test, y_pred)
+            mse = mean_squared_error(y_test, y_pred)
+            mae_total += mae
+            mse_total += mse
 
             #print("Mean Absolute Error (MAE) for iteration {} of {} using the {} method:".format(split_random_state+1, data_case, method), mae)
             #print("Mean Squared Error (MSE) for iteration {} of {} using the {} method:".format(split_random_state+1, data_case, method), mse)
@@ -191,6 +181,17 @@ for data_case in data_cases:
         #average_predictions = np.mean(all_predictions, axis=0)
         #print("Avg")
         #print(average_predictions)
+
+        if plot_flag:
+            plt.figure(figsize=(10, 6))
+            plt.scatter(y_test, y_pred, color='blue', alpha=0.6, label='Average Predicted vs Actual')
+            plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 'k--', lw=2, label='Ideal Fit Line')
+            plt.xlabel('Actual Combination MPG')
+            plt.ylabel('Average Predicted Combination MPG')
+            plt.title(f'{method.upper()} Model: Average Predicted vs Actual Combination MPG')
+            plt.legend()
+            plt.grid(True)
+            plt.savefig(f'src/plots/{method}_{data_case}_actual_vs_predicted.png')
 
         mae_med = mae_total/n_repeats
         mse_med = mse_total/n_repeats
