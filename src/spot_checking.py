@@ -20,7 +20,7 @@ def train(n_repeats, kfolds, plot_flag, X_train, y_train, X_train_mandatory, y_t
     mae_total = 0
     mse_total = 0
     all_predictions = []  # List to store predictions for each split
-    for split_random_state in range(0, n_repeats):
+    for _ in range(0, n_repeats):
         # Separate validation data and the remaining instances
         #X_train, X_val, y_train, y_val  = train_test_split(X, y, test_size=val_size)
         # Split the remaining instances in kfolds parts
