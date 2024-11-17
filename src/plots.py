@@ -2,6 +2,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+def plot_boxplot(dataset, atribute, title, description, filename):
+    pass
+
 def plot_violinplot(dataset, atribute, title, description, filename):
     plt.figure(figsize=(10, 6))
     sns.violinplot(dataset[atribute], orient='h', color='skyblue')
