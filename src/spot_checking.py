@@ -25,9 +25,9 @@ def train(n_repeats, kfolds, k, plot_flag, X_train, y_train, X_train_mandatory, 
         #X_train, X_val, y_train, y_val  = train_test_split(X, y, test_size=val_size)
         # Split the remaining instances in kfolds parts
         kf = KFold(n_splits=kfolds, shuffle=True)
-        for train_index, test_index in kf.split(X_train):
-            X_train, X_val = X_train.iloc[train_index], X_train.iloc[test_index]
-            y_train, y_val = y_train.iloc[train_index], y_train.iloc[test_index]
+        for train_index, validation_index in kf.split(X_train):
+            X_train, X_val = X_train.iloc[train_index], X_train.iloc[validation_index]
+            y_train, y_val = y_train.iloc[train_index], y_train.iloc[validation_index]
             # If no_electric_cars, join the forced test_case with the random test_case
             # Concatanate the mandatory and training sets
             X_train = pd.concat([X_train_mandatory, X_train])
@@ -41,11 +41,8 @@ def train(n_repeats, kfolds, k, plot_flag, X_train, y_train, X_train_mandatory, 
 
             # ColumnTransformer applies preprocessing patterns e.g. StandardScaler() and
             # OneHotEncoder() to groups, e.g. numerical_features and categorical_features
-        # Preprocessor will be applied to every dataset
+            # Preprocessor will be applied to every dataset
             preprocessor = ColumnTransformer([
-                #("num", StandardScaler(), numerical_features),
-                #("cat", OneHotEncoder(), categorical_features)
-                #("num", PolynomialFeatures(degree=2, include_bias=False), numerical_features),
                 ("num", StandardScaler(), numerical_features),
                 ("cat", OneHotEncoder(), categorical_features)
             ])
@@ -91,7 +88,7 @@ def train(n_repeats, kfolds, k, plot_flag, X_train, y_train, X_train_mandatory, 
     #print(all_predictions)
     #average_predictions = np.mean(all_predictions, axis=0)
     #print("Avg")
-     #print(average_predictions)
+    #print(average_predictions)
 
     mae_med = mae_total/n_repeats
     mse_med = mse_total/n_repeats
