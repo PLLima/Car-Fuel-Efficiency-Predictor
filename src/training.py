@@ -1,7 +1,4 @@
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-import numpy as np
 
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.ensemble import RandomForestRegressor
@@ -13,27 +10,21 @@ from sklearn.preprocessing import OneHotEncoder
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
-from sklearn.impute import SimpleImputer
-from sklearn.preprocessing import RobustScaler
-from sklearn.preprocessing import PolynomialFeatures
 
-from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
-from sklearn.model_selection import train_test_split
-from sklearn.model_selection import KFold, cross_val_score
+from sklearn.metrics import mean_squared_error, mean_absolute_error
+from sklearn.model_selection import KFold
 
-import preprocessing as pre
 import plots
 
-
-def train(n_repeats, Ksplit, k, plot_flag, X_train, y_train, X_train_mandatory, y_train_mandatory, method):
+def train(n_repeats, kfolds, k, plot_flag, X_train, y_train, X_train_mandatory, y_train_mandatory, method):
     mae_total = 0
     mse_total = 0
     all_predictions = []  # List to store predictions for each split
     for split_random_state in range(0, n_repeats):
         # Separate validation data and the remaining instances
         #X_train, X_val, y_train, y_val  = train_test_split(X, y, test_size=val_size)
-        # Split the remaining instances in Ksplit parts
-        kf = KFold(n_splits=Ksplit, shuffle=True)
+        # Split the remaining instances in kfolds parts
+        kf = KFold(n_splits=kfolds, shuffle=True)
         for train_index, test_index in kf.split(X_train):
             X_train, X_val = X_train.iloc[train_index], X_train.iloc[test_index]
             y_train, y_val = y_train.iloc[train_index], y_train.iloc[test_index]
