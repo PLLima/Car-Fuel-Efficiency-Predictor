@@ -16,7 +16,7 @@ from sklearn.model_selection import KFold
 
 import plots
 
-def train(n_repeats, kfolds, k, plot_flag, X_train, y_train, X_train_mandatory, y_train_mandatory, method):
+def train(n_repeats, kfolds, plot_flag, X_train, y_train, X_train_mandatory, y_train_mandatory, method):
     mae_total = 0
     mse_total = 0
     all_predictions = []  # List to store predictions for each split
@@ -24,7 +24,7 @@ def train(n_repeats, kfolds, k, plot_flag, X_train, y_train, X_train_mandatory, 
         # Separate validation data and the remaining instances
         #X_train, X_val, y_train, y_val  = train_test_split(X, y, test_size=val_size)
         # Split the remaining instances in kfolds parts
-        kf = KFold(n_splits=kfolds, shuffle=True)
+        kf = KFold(n_splits=kfolds, shuffle=True, random_state=42)
         for train_index, validation_index in kf.split(X_train):
             X_train, X_val = X_train.iloc[train_index], X_train.iloc[validation_index]
             y_train, y_val = y_train.iloc[train_index], y_train.iloc[validation_index]
@@ -49,15 +49,15 @@ def train(n_repeats, kfolds, k, plot_flag, X_train, y_train, X_train_mandatory, 
             # Select model and configuration for use in the pipeline
             match method:
                 case "knn":
-                    model = KNeighborsClassifier(n_neighbors=k)
+                    model = KNeighborsClassifier()
                 case "random_forest":
-                    model = RandomForestRegressor(max_depth=6)
+                    model = RandomForestRegressor()
                 case "linear_regression":
                     model = LinearRegression()
                 case "neural_networks":
                     model = MLPRegressor(max_iter=2500)
                 case "svm":
-                    model = SVR(C=1.0, epsilon=0.2)
+                    model = SVR()
             # Pipeline applies the preprocessed dataset to the model for fitting
             pipe = Pipeline([
                 ("preprocessor", preprocessor),
