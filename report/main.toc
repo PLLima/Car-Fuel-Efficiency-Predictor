@@ -6,5 +6,5 @@
 \contentsline {subsection}{\numberline {2.1.2}Pré-processamento dos Dados}{4}{subsection.0.2.2}%
 \contentsline {section}{\numberline {3.1}Abordagem, Algoritmos e Estratégias de Avaliação}{6}{section.0.3}%
 \contentsline {section}{\numberline {4.1}\textit {Spot-checking} de Algoritmos}{7}{section.0.4}%
-\contentsline {subsection}{\numberline {4.1.1}Revisitando os Dados após Pre-processamento}{7}{subsection.0.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Revisitando os Dados após o Pré-processamento}{7}{subsection.0.4.1}%
 \contentsline {subsection}{\numberline {4.1.2}Sumarização dos Resultados}{8}{subsection.0.4.2}%
