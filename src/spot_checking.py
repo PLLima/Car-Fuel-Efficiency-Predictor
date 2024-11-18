@@ -60,6 +60,4 @@ def evaluate_model(method, X_train, X_val, y_train, y_val, random_state):
     # Prediction and evaluation
     model_prediction = pipe.predict(X_val)
 
-    metric = mean_squared_error(y_val, model_prediction)
-    
-    return metric, model_prediction
+    return mean_squared_error(y_val, model_prediction)
