@@ -17,12 +17,13 @@ from sklearn.model_selection import KFold
 import plots
 
 def train(kfolds, X_train, y_train, X_train_mandatory, y_train_mandatory, method):
+    random_state = 42
     model_metrics = []  # List to store metrics for each split
 
     # Separate validation data and the remaining instances
     #X_train, X_val, y_train, y_val  = train_test_split(X, y, test_size=val_size)
     # Split the remaining instances in kfolds parts
-    kf = KFold(n_splits=kfolds, shuffle=True, random_state=42)
+    kf = KFold(n_splits=kfolds, shuffle=True, random_state=random_state)
     for train_index, validation_index in kf.split(X_train):
         X_train, X_val = X_train.iloc[train_index], X_train.iloc[validation_index]
         y_train, y_val = y_train.iloc[train_index], y_train.iloc[validation_index]
@@ -49,11 +50,11 @@ def train(kfolds, X_train, y_train, X_train_mandatory, y_train_mandatory, method
             case "knn":
                 model = KNeighborsClassifier()
             case "random_forest":
-                model = RandomForestRegressor()
+                model = RandomForestRegressor(random_state=random_state)
             case "linear_regression":
                 model = LinearRegression()
             case "neural_networks":
-                model = MLPRegressor(max_iter=2500)
+                model = MLPRegressor(max_iter=2500, random_state=random_state)
             case "svm":
                 model = SVR()
         # Pipeline applies the preprocessed dataset to the model for fitting
