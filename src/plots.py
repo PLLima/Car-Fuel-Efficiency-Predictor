@@ -2,8 +2,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-def plot_boxplot(dataset, atribute, title, description, filename):
-    pass
+def plot_boxplot(dataset, title, x_label, y_label, filename):
+    plt.figure(figsize=(10, 6))
+    sns.boxplot(data=dataset, orient='h', color='skyblue')
+    plt.xlabel(x_label)
+    plt.ylabel(y_label)
+    plt.title(title)
+    plt.savefig(f'plots/box_plots/{filename}.png')
 
 def plot_violinplot(dataset, atribute, title, description, filename):
     plt.figure(figsize=(10, 6))

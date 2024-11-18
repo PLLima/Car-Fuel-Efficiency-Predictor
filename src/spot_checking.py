@@ -27,7 +27,7 @@ def evaluate_model(method, X_train, X_val, y_train, y_val, random_state):
     # Separate analyzed features into numerical and categorical
     # As to apply preprocessing only to valid features
     numerical_features = X_train.select_dtypes(include=['int64', 'float64']).columns
-    categorical_features = X_train.select_dtypes(include=['object', 'bool']).columns
+    categorical_features = X_train.select_dtypes(include=['object', 'bool', 'string']).columns
 
     # ColumnTransformer applies preprocessing patterns e.g. StandardScaler() and
     # OneHotEncoder() to groups, e.g. numerical_features and categorical_features
