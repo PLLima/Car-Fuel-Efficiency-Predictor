@@ -14,6 +14,16 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import KFold
 
+def generate_train_validation_sets(train_indexes, validation_indexes, X, X_mandatory, y, y_mandatory):
+    for train_index, validation_index in zip(train_indexes, validation_indexes):
+        X_train, X_val = X_train.iloc[train_index], X_train.iloc[validation_index]
+        y_train, y_val = y_train.iloc[train_index], y_train.iloc[validation_index]
+        # If no_electric_cars, join the forced test_case with the random test_case
+        # Concatanate the mandatory and training sets
+        X_train = pd.concat([X_mandatory, X_train])
+        y_train = pd.concat([y_mandatory, y_train])
+    return X_train, X_val, y_train, y_val
+
 def evaluate_model(kfolds, X_train, y_train, X_train_mandatory, y_train_mandatory, method):
     random_state = 42
     model_metrics = []  # List to store metrics for each split
