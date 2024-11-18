@@ -14,9 +14,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import KFold
 
-import plots
-
-def train(kfolds, X_train, y_train, X_train_mandatory, y_train_mandatory, method):
+def evaluate_model(kfolds, X_train, y_train, X_train_mandatory, y_train_mandatory, method):
     random_state = 42
     model_metrics = []  # List to store metrics for each split
 
