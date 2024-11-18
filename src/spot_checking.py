@@ -17,7 +17,6 @@ from sklearn.model_selection import KFold
 import plots
 
 def train(kfolds, X_train, y_train, X_train_mandatory, y_train_mandatory, method):
-    metric_total = 0
     model_metrics = []  # List to store metrics for each split
 
     # Separate validation data and the remaining instances
@@ -71,6 +70,5 @@ def train(kfolds, X_train, y_train, X_train_mandatory, y_train_mandatory, method
 
         metric = mean_squared_error(y_val, y_pred)
         model_metrics.append(metric)
-        metric_total += metric
 
     return model_metrics, y_pred
