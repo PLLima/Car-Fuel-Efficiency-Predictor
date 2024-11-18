@@ -2,5 +2,7 @@
 \thispagestyle {empty}
 \contentsline {section}{\numberline {1.1}Definição do Problema e Coleta de Dados}{2}{section.0.1}%
 \contentsline {section}{\numberline {2.1}Análise Exploratória e Pré-processamento dos Dados}{3}{section.0.2}%
-\contentsline {section}{\numberline {3.1}Abordagem, Algoritmos e Estratégias de Avaliação}{4}{section.0.3}%
-\contentsline {section}{\numberline {4.1}\textit {Spot-checking} de Algoritmos}{5}{section.0.4}%
+\contentsline {subsection}{\numberline {2.1.1}Análise Exploratória dos Dados}{3}{subsection.0.2.1}%
+\contentsline {subsection}{\numberline {2.1.2}Pré-processamento dos Dados}{4}{subsection.0.2.2}%
+\contentsline {section}{\numberline {3.1}Abordagem, Algoritmos e Estratégias de Avaliação}{6}{section.0.3}%
+\contentsline {section}{\numberline {4.1}\textit {Spot-checking} de Algoritmos}{7}{section.0.4}%

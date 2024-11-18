@@ -16,5 +16,110 @@
   {}
 \endgroup
 
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{Ayşe}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=f11a6ec4cce0bf5dda3bea357e8c5918}{%
+           family={{Ayşe Nur Durmaz}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{f11a6ec4cce0bf5dda3bea357e8c5918}
+      \strng{fullhash}{f11a6ec4cce0bf5dda3bea357e8c5918}
+      \strng{bibnamehash}{f11a6ec4cce0bf5dda3bea357e8c5918}
+      \strng{authorbibnamehash}{f11a6ec4cce0bf5dda3bea357e8c5918}
+      \strng{authornamehash}{f11a6ec4cce0bf5dda3bea357e8c5918}
+      \strng{authorfullhash}{f11a6ec4cce0bf5dda3bea357e8c5918}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Website available: \url{https://www.kaggle.com/code/ayenurdurmaz/oruntutanima-perceptron}}
+      \field{title}{{OruntuTanima-Perceptron}}
+      \field{year}{2024}
+    \endentry
+    \entry{ColumnTransformer}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=9dc6c3d0e145ea7a8f026f415bc12cdc}{%
+           family={{Jason Brownlee}},
+           familyi={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{9dc6c3d0e145ea7a8f026f415bc12cdc}
+      \strng{fullhash}{9dc6c3d0e145ea7a8f026f415bc12cdc}
+      \strng{bibnamehash}{9dc6c3d0e145ea7a8f026f415bc12cdc}
+      \strng{authorbibnamehash}{9dc6c3d0e145ea7a8f026f415bc12cdc}
+      \strng{authornamehash}{9dc6c3d0e145ea7a8f026f415bc12cdc}
+      \strng{authorfullhash}{9dc6c3d0e145ea7a8f026f415bc12cdc}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Website available: \url{https://machinelearningmastery.com/columntransformer-for-numerical-and-categorical-data/}}
+      \field{title}{{How to Use the ColumnTransformer for Data Preparation}}
+      \field{year}{2020}
+    \endentry
+    \entry{Lunovian}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=5452299a53bede2b44fa50f0ad959373}{%
+           family={{Lunovian}},
+           familyi={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{5452299a53bede2b44fa50f0ad959373}
+      \strng{fullhash}{5452299a53bede2b44fa50f0ad959373}
+      \strng{bibnamehash}{5452299a53bede2b44fa50f0ad959373}
+      \strng{authorbibnamehash}{5452299a53bede2b44fa50f0ad959373}
+      \strng{authornamehash}{5452299a53bede2b44fa50f0ad959373}
+      \strng{authorfullhash}{5452299a53bede2b44fa50f0ad959373}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Website available: \url{https://www.kaggle.com/code/anmatngu/which-cars-contribute-to-a-greener-future}}
+      \field{title}{{Which Cars Contribute to a Greener Future?}}
+      \field{year}{2024}
+    \endentry
+    \entry{PadronizarDados}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=987f744a29f6f01829094e6c4f6e76f8}{%
+           family={{Matheus Vasconcelos}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{987f744a29f6f01829094e6c4f6e76f8}
+      \strng{fullhash}{987f744a29f6f01829094e6c4f6e76f8}
+      \strng{bibnamehash}{987f744a29f6f01829094e6c4f6e76f8}
+      \strng{authorbibnamehash}{987f744a29f6f01829094e6c4f6e76f8}
+      \strng{authornamehash}{987f744a29f6f01829094e6c4f6e76f8}
+      \strng{authorfullhash}{987f744a29f6f01829094e6c4f6e76f8}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Website available: \url{https://medium.com/@mhvasconcelos/distribuição-normal-e-a-biblioteca-standard-scaler-em-python-f21c52070c6b}}
+      \field{title}{{Distribuição normal e a classe Standard Scaler da biblioteca Scikit-learn...}}
+      \field{year}{2023}
+    \endentry
+    \entry{Priyanshu}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=efb423d13e3be8c9e9b339fc5e8bca19}{%
+           family={{Priyanshu shukla}},
+           familyi={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{efb423d13e3be8c9e9b339fc5e8bca19}
+      \strng{fullhash}{efb423d13e3be8c9e9b339fc5e8bca19}
+      \strng{bibnamehash}{efb423d13e3be8c9e9b339fc5e8bca19}
+      \strng{authorbibnamehash}{efb423d13e3be8c9e9b339fc5e8bca19}
+      \strng{authornamehash}{efb423d13e3be8c9e9b339fc5e8bca19}
+      \strng{authorfullhash}{efb423d13e3be8c9e9b339fc5e8bca19}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Website available: \url{https://www.kaggle.com/code/priyanshu594/analysis-on-car-performance-dataset}}
+      \field{title}{{Analysis on Car performance dataset}}
+      \field{year}{2024}
+    \endentry
+  \enddatalist
+\endrefsection
 \endinput
 
