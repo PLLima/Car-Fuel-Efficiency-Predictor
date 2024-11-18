@@ -153,11 +153,88 @@ foram aplicadas após a separação de conjuntos de treinamento/validação e de
 
 Um outro problema encontrado consiste na possibilidade de não ser visto algum modelo de carro (\textit{model}) no treinamento. Isso pode acontecer pois há uma quantidade muito grande de modelos diferentes,
 alguns deles com poucas instâncias. Para solucionar esse problema, ``forçou-se" a haver pelo menos uma instância de cada modelo de veículo no conjunto de treinamento, antes de realizar a separação de
-conjunto de dados para teste. Para realizar essa última separação, utilizou-se a função \texttt{train\_test\_split()} com um \texttt{test\_size} de 15\%.
+conjunto de dados para teste. Para realizar essa última separação, utilizou-se a função \texttt{train\_test\_split()} com um \texttt{test\_size} de 15\%. Essa ação corresponde à estragégia de \textit{holdout}
+vista em aula para a primeira divisão dos dados.
 
 \section{Abordagem, Algoritmos e Estratégias de Avaliação}
 
+Seguindo as ideias discutidas nos ítens anteriores, este problema consiste em uma tarefa de regressão. Por conta disso, o grupo buscou no conteúdo programático da disciplina algoritmos para essa tarefa.
+Com isso, separou-se os seguintes algoritmos de aprendizado para serem avaliados: \textbf{\textit{k-Nearest Neighbors}}, \textbf{\textit{Random Forest}}, \textbf{Regressão Linear}, \textbf{Redes Neurais}
+e \textbf{SVM}. A escolha desses modelos também foi inspirada nos trabalhos de Neslihan Avsar \cite{LinearRegression}, de James McCaffrey \cite{Regression} e de isitapol2002 \cite{MultRegression}.
+
+Definidos esses algoritmos e as estratégias de pré-processamento, definiu-se como estratégia de validação desses algoritmos o \textit{k-fold cross-validation}. Essa é a \textit{magnum opus} das estratégias
+de validação de aprendizado supervisionado, então foi a adotada pelo grupo. O valor de \texttt{k = 13} foi definido experimentalmente. A justificativa mora na quantidade de instâncias que
+sobraram para a validação após a separação de modelos de carros únicos para o treinamento e do conjunto de testes. O número final de elementos por \textit{fold} beira 18 instâncias (quantidade não muito grande,
+porém proporcionalmente aceita para a quantidade total de instâncias do \textit{dataset}), gerando 13 medições de erro para cada modelo.
+
+Em cada iteração do \textit{k-fold cross-validation}, realizou-se a normalização e a codificação dos atributos correspondentes através dos métodos adequados do \texttt{scikit learn}. Foi fixada um \texttt{random\_state = 42}
+para padronizar os resultados dos testes. Os hiperparâmetros utilizados nesta etapa foram todos os padrões de cada modelo da biblioteca do \texttt{scikit learn}.
+
+A métrica de avaliação utilizada foi o \textit{Mean Squared Error} (MSE). O grupo optou por sumarizar os resultados do \textit{spot-checking} com apenas esta métrica (descartando o \textit{Mean Absolute Error}) porque são métricas
+de natureza muito similar, já foi realizada a limpeza de \textit{outliers} que poderiam prejudicar os resultados dessas medições e essa é uma métrica que apresenta convergência mais rápida (Nirajan Acharya \cite{MSEAndMAE}). Além
+disso, foram feitas diversas representações dessa métrica para obter maior confiança nos resultados obtidos.
+
 \section{\textit{Spot-checking} de Algoritmos}
+
+\subsection{Revisitando os Dados após Pre-processamento}
+
+Com toda a metodologia explicada, voltar-se-á ao conjunto de dados pré-processados para realizar uma breve revisão dos dados de treinamento/validação. Primeiramente, após a remoção de \textit{outliers}, redução de dimensionalidade
+e exclusão de instâncias de carros elétricos, gerou-se o seguinte gráfico de distribuição da saída a ser predita:
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=.85\linewidth]{images/plots/violin_plots/no_outliers_combination_mpg.png}
+  \caption{\label{img:pre_combination_dist} \textit{Violin Plot} de Consumo Médio Pré-processado}
+\end{figure}
+
+Agora observa-se que os dados quase se distribuem em formato de uma gaussiana. Além disso, continua observando-se a concentração de dados entre 15 e 30mpg de consumo médio. O gráfico de correlação também é refeito a seguir:
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=.85\linewidth]{images/plots/heatmaps/no_outliers_numeric_atributes_correlation.png}
+  \caption{\label{img:pre_num_heatmat} \textit{Heatmap} de Correlações entre Atributos Numéricos Pré-processados}
+\end{figure}
+
+Com a remoção dos atributos citados anteriormente, observa-se uma boa redução na correlação entre os atributos numéricos restantes. Algo que ajuda bastante a evitar a maldição da dimensionalidade.
+
+\subsection{Sumarização dos Resultados}
+
+Com esses dados revisitados, a seguir seguem os resultados obtidos pelos modelos:
+
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{| c | c | c |}
+      \hline
+      \rowcolor{lightgray}
+      \textbf{Modelo} & \textbf{Média dos MSE} & \textbf{Desvio Padrão dos MSE} \\
+      \hline
+      kNN & 5,4293 & 2,3616 \\
+      \hline
+      \textit{Random Forest} & 1,9517 & 1,1847 \\
+      \hline
+      Regressão Linear & 1,6631 & 0,9758 \\
+      \hline
+      Redes Neurais & 1,8377 & 1,0418 \\
+      \hline
+      SVM & 3,3739 & 1,3368 \\
+      \hline
+  \end{tabular}
+  \caption{\label{table:model_summary} Médias e Desvios Padrões dos MSE}
+\end{table}
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=.85\linewidth]{images/plots/box_plots/mse.png}
+  \caption{\label{img:mse_boxplot} \textit{Box Plot} dos MSE}
+\end{figure}
+
+Por fim, com esses resultados, fica claro que os 3 modelos mais promissores foram a \textbf{\textit{Random Forest}}, a \textbf{Regressão Linear} e as \textbf{Redes Neurais}. Como nenhum atributo
+foi otimizado, pode ser que os outros dois modelos se desempenhassem melhor, porém, com as configurações básicas de hiperparâmetros, esses foram os três mais promissores.
+
+Dentre esses, é perceptível que os mais eficientes nesta tarefa foram o algoritmo de Regressão Linear e o modelo de Redes Neurais, visto que o viés da \textit{Random Forest} é mais elevado quando
+comparado com esses últimos dois. Mesmo que a Regressão Linear apresente média e desvio padrão melhores do que as Redes Neurais, o \textit{box plot} acima mostra que o viés do erro das Redes Neurais
+é mais concentrado, próximo de um valor estável. Por conta dessas razões, serão aprofundados as Florestas Aleatórias, o Regressor Linear e as Redes Neurais, com enfase nos últimos dois durante a
+próxima etapa do projeto.
 
 \clearpage
 \printbibliography

@@ -39,6 +39,46 @@
       \field{title}{{OruntuTanima-Perceptron}}
       \field{year}{2024}
     \endentry
+    \entry{MultRegression}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=a1023b258085f3bab04868aee41fb8d8}{%
+           family={{isitapol2002}},
+           familyi={i\bibinitperiod}}}%
+      }
+      \strng{namehash}{a1023b258085f3bab04868aee41fb8d8}
+      \strng{fullhash}{a1023b258085f3bab04868aee41fb8d8}
+      \strng{bibnamehash}{a1023b258085f3bab04868aee41fb8d8}
+      \strng{authorbibnamehash}{a1023b258085f3bab04868aee41fb8d8}
+      \strng{authornamehash}{a1023b258085f3bab04868aee41fb8d8}
+      \strng{authorfullhash}{a1023b258085f3bab04868aee41fb8d8}
+      \field{sortinit}{i}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Website available: \url{https://www.geeksforgeeks.org/multiple-linear-regression-with-scikit-learn/}}
+      \field{title}{{Multiple Linear Regression With scikit-learn}}
+      \field{year}{2022}
+    \endentry
+    \entry{Regression}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=34f835a32a8ef34877f2c7c7afb26490}{%
+           family={{James McCaffrey}},
+           familyi={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{34f835a32a8ef34877f2c7c7afb26490}
+      \strng{fullhash}{34f835a32a8ef34877f2c7c7afb26490}
+      \strng{bibnamehash}{34f835a32a8ef34877f2c7c7afb26490}
+      \strng{authorbibnamehash}{34f835a32a8ef34877f2c7c7afb26490}
+      \strng{authornamehash}{34f835a32a8ef34877f2c7c7afb26490}
+      \strng{authorfullhash}{34f835a32a8ef34877f2c7c7afb26490}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Website available: \url{https://visualstudiomagazine.com/Articles/2023/05/01/regression-scikit.aspx}}
+      \field{title}{{Regression Using a scikit MLPRegressor Neural Network}}
+      \field{year}{2023}
+    \endentry
     \entry{ColumnTransformer}{misc}{}
       \name{author}{1}{}{%
         {{hash=9dc6c3d0e145ea7a8f026f415bc12cdc}{%
@@ -97,6 +137,46 @@
       \field{labeltitlesource}{title}
       \field{note}{Website available: \url{https://medium.com/@mhvasconcelos/distribuição-normal-e-a-biblioteca-standard-scaler-em-python-f21c52070c6b}}
       \field{title}{{Distribuição normal e a classe Standard Scaler da biblioteca Scikit-learn...}}
+      \field{year}{2023}
+    \endentry
+    \entry{LinearRegression}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=9d98a63a934d214a8f02baf9138f6974}{%
+           family={{Neslihan Avsar}},
+           familyi={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{9d98a63a934d214a8f02baf9138f6974}
+      \strng{fullhash}{9d98a63a934d214a8f02baf9138f6974}
+      \strng{bibnamehash}{9d98a63a934d214a8f02baf9138f6974}
+      \strng{authorbibnamehash}{9d98a63a934d214a8f02baf9138f6974}
+      \strng{authornamehash}{9d98a63a934d214a8f02baf9138f6974}
+      \strng{authorfullhash}{9d98a63a934d214a8f02baf9138f6974}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Website available: \url{https://medium.com/@neslihannavsar/building-a-linear-regression-model-with-scikit-learn-part-1-eed4c04f53f9}}
+      \field{title}{{Building a Linear Regression model with Scikit-Learn — Part — 1}}
+      \field{year}{2022}
+    \endentry
+    \entry{MSEAndMAE}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=4f23d08d81c10a205f95139e9cdf6eec}{%
+           family={{Nirajan Acharya}},
+           familyi={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{4f23d08d81c10a205f95139e9cdf6eec}
+      \strng{fullhash}{4f23d08d81c10a205f95139e9cdf6eec}
+      \strng{bibnamehash}{4f23d08d81c10a205f95139e9cdf6eec}
+      \strng{authorbibnamehash}{4f23d08d81c10a205f95139e9cdf6eec}
+      \strng{authornamehash}{4f23d08d81c10a205f95139e9cdf6eec}
+      \strng{authorfullhash}{4f23d08d81c10a205f95139e9cdf6eec}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Website available: \url{https://medium.com/@nirajan.acharya777/choosing-between-mean-squared-error-mse-and-mean-absolute-error-mae-in-regression-a-deep-dive-c16b4eeee603}}
+      \field{title}{{Choosing Between Mean Squared Error and Mean Absolute Error}}
       \field{year}{2023}
     \endentry
     \entry{Priyanshu}{misc}{}
