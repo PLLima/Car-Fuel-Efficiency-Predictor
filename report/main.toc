@@ -8,3 +8,7 @@
 \contentsline {section}{\numberline {4.1}\textit {Spot-checking} de Algoritmos}{7}{section.0.4}%
 \contentsline {subsection}{\numberline {4.1.1}Revisitando os Dados após o Pré-processamento}{7}{subsection.0.4.1}%
 \contentsline {subsection}{\numberline {4.1.2}Sumarização dos Resultados}{8}{subsection.0.4.2}%
+\contentsline {section}{\numberline {5.1}Otimização de Hiperparâmetros}{9}{section.0.5}%
+\contentsline {section}{\numberline {6.1}Comparação de Desempenhos em Dados de Teste}{10}{section.0.6}%
+\contentsline {section}{\numberline {7.1}Interpretação dos Modelos}{11}{section.0.7}%
+\contentsline {section}{\numberline {8.1}Conclusões Finais}{12}{section.0.8}%
