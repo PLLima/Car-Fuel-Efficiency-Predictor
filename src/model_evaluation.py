@@ -1,6 +1,6 @@
 import pandas as pd
 
-from sklearn.neighbors import KNeighborsClassifier
+from sklearn.neighbors import KNeighborsRegressor
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.linear_model import LinearRegression
 from sklearn.neural_network import MLPRegressor
@@ -39,7 +39,7 @@ def evaluate_model(method, X_train, X_val, y_train, y_val, random_state):
     # Select model and configuration for use in the pipeline
     match method:
         case "knn":
-            model = KNeighborsClassifier()
+            model = KNeighborsRegressor()
         case "random_forest":
             model = RandomForestRegressor(random_state=random_state)
         case "linear_regression":
