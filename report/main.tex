@@ -129,7 +129,9 @@ Por fim, analisou-se a Correlação de Pearson entre os atributos numéricos atr
 
 Olhando para o gráfico acima, percebe-se que há diversos atributos preditores que apresentam alto nível de correlação com a saída \textit{combination mpg} e entre si. Ambos os atributos
 \textit{highway mpg} e \textit{city mpg} serão descartados do \textit{dataset} por terem alta correlação entre si e com o valor da saída do modelo, facilitando demais a tarefa dos modelos.
-Além disso, \textit{displacement} ou (exclusivo) \textit{cylinders} será excluído do conjunto de dados por terem alta correlação entre si.
+Além disso, observa-se que \textit{displacement} e \textit{cylinders} também apresentam alta correlação entre si. No entanto, a informação de \textit{cylinders} ou cilindros de um carro é diferente
+da informação de \textit{displacement} ou cilindradas desse. As cilindradas representam o volume total dos cilindros de um motor. Por conta disso, são calculados a partir dos cilindros, porém
+acrescentam um dado a novo ao problema. Ou seja, vale a pena mesmo assim manter ambos os atributos no \textit{dataset}.
 
 Isto não foi ilustrado pelos gráficos, porém os dados numéricos apresentam diversas escalas diferentes, exigindo técnicas de normalização após a separação de conjuntos de treinamento/validação
 e de testes.
