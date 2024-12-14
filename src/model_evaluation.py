@@ -29,7 +29,7 @@ def evaluate_model(method, X_train, X_val, y_train, y_val, random_state):
     numerical_features = X_train.select_dtypes(include=['int64', 'float64']).columns
     categorical_features = X_train.select_dtypes(include=['object', 'bool', 'string']).columns
 
-    # ColumnTransformer applies preprocessing patterns e.g. StandardScaler() and
+    # ColumnTransformer applies preprocessing patterns e.g. MinMaxScaler() and
     # OneHotEncoder() to groups, e.g. numerical_features and categorical_features
     # Preprocessor will be applied to every dataset
     preprocessor = ColumnTransformer([
