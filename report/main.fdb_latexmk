@@ -1,14 +1,14 @@
 # Fdb version 4
-["biber main"] 0 "main.bcf" "main.bbl" "main" 1734147908.3515 -1
-  "main.bcf" 1734147908.28063 108301 8ea91f57d70ed71b75cbbe2f50ca85f7 "pdflatex"
+["biber main"] 0 "main.bcf" "main.bbl" "main" 1734149047.93464 -1
+  "main.bcf" 1734149047.86379 108301 8ea91f57d70ed71b75cbbe2f50ca85f7 "pdflatex"
   "reference.bib" 1731905748.05422 2455 d43196af504bb3828dea2ae2bb155fc7 ""
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1734147907.04567 "/home/pllima0909/Documents/Git/INF01017-Machine-Learning/Car-Fuel-Efficiency-Predictor/report/main.tex" "main.pdf" "main" 1734147908.35192 0
+["pdflatex"] 1734149046.63567 "/home/pllima0909/Documents/Git/INF01017-Machine-Learning/Car-Fuel-Efficiency-Predictor/report/main.tex" "main.pdf" "main" 1734149047.93497 0
   "/etc/texmf/web2c/texmf.cnf" 1728302084.72637 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/pllima0909/Documents/Git/INF01017-Machine-Learning/Car-Fuel-Efficiency-Predictor/report/main.tex" 1734147779.37537 15832 ab76125cabd5d8f5660e07c86f5db4c6 ""
+  "/home/pllima0909/Documents/Git/INF01017-Machine-Learning/Car-Fuel-Efficiency-Predictor/report/main.tex" 1734149046.44295 15883 0566511dafb6e78d887145059da83f42 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ectt1000.tfm" 1136768653 1536 06717a2b50de47d4087ac0e6cd759455 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -126,18 +126,18 @@
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1732746323 6832104 b6b496d54b05523112511435600aeee5 ""
   "images/logos/INF.png" 1731186491.5603 15010 1abd8f9e244e530d3a1ab0c922b4a613 ""
   "images/logos/UFRGS.png" 1731186491.5803 88725 6440c8a13158bb4b7d2155d90ff2ae99 ""
-  "images/plots/box_plots/mse.png" 1734120544.71536 24277 5965319fe0c62353ce680a7d1bd3b534 ""
+  "images/plots/box_plots/mse.png" 1734148798.57947 24307 b32fc3f502c11169000de94ad82253ae ""
   "images/plots/heatmaps/no_outliers_numeric_atributes_correlation.png" 1734147899.08953 41325 4d0e3daa2ac66f640e56405faded2fea ""
   "images/plots/heatmaps/numeric_atributes_correlation.png" 1731900068.7354 58334 079d7811a9752fa9a236980b29ae2154 ""
   "images/plots/pie_charts/pure_car_classes.png" 1731900068.7174 68189 392b02c688530ac5d4b0281e389cdb8c ""
   "images/plots/violin_plots/no_outliers_combination_mpg.png" 1731900068.7524 42405 0545cc0fd8adaf6a515aa21944a4b263 ""
   "images/plots/violin_plots/pure_combination_mpg.png" 1731900068.7524 34510 dd941cb6961886bca980dc072857f6b5 ""
-  "main.aux" 1734147908.27663 5421 5abf2603b05d87c19bf1da126bedbc00 "pdflatex"
+  "main.aux" 1734149047.86179 5421 5abf2603b05d87c19bf1da126bedbc00 "pdflatex"
   "main.bbl" 1731905748.85324 9342 5090e21e1d42b6630e03a1cc7fe5e439 "biber main"
-  "main.out" 1734147908.27963 2829 55ea58c6e931aece9fcd74a7c19f4657 "pdflatex"
-  "main.run.xml" 1734147908.28163 2338 bc4e4d191fc7d6cf8344f373806f71a7 "pdflatex"
-  "main.tex" 1734147779.37537 15832 ab76125cabd5d8f5660e07c86f5db4c6 ""
-  "main.toc" 1734147908.28163 1258 a831df143fd133e211bb2aa194d9715a "pdflatex"
+  "main.out" 1734149047.86279 2829 55ea58c6e931aece9fcd74a7c19f4657 "pdflatex"
+  "main.run.xml" 1734149047.86479 2338 bc4e4d191fc7d6cf8344f373806f71a7 "pdflatex"
+  "main.tex" 1734149046.44295 15883 0566511dafb6e78d887145059da83f42 ""
+  "main.toc" 1734149047.86479 1258 a831df143fd133e211bb2aa194d9715a "pdflatex"
   (generated)
   "main.aux"
   "main.bcf"

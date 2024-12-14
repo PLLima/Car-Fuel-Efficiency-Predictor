@@ -150,8 +150,8 @@ evitar que os modelos sejam treinados com instâncias que não representam bem a
 
 Sobre a codificação dos atributos, o grupo utilizou a codificação padrão de categórico para numérico que é o \textit{one-hot encoding}. A justificativa para isso é que os atributos categóricos não
 apresentam nenhuma ordem específica que justifique utilizar uma codificação em números inteiros. Além disso, em relação à normalização, baseado no trabalho do Jason Brownlee \cite{ColumnTransformer} e
-do Matheus Vasconcelos \cite{PadronizarDados}, optou-se por utilizar a padronização por \textit{z-score}, visto que os dados aproximam uma distribuição normal. Tanto a codificação, quanto a normalização
-foram aplicadas após a separação de conjuntos de treinamento/validação e de testes.
+do Matheus Vasconcelos \cite{PadronizarDados}, optou-se por utilizar a padronização por \textit{min-max}, visto que é uma normalização mais eficaz na maioria dos casos, não exigindo uma distribuição normal
+dos dados. Tanto a codificação, quanto a normalização foram aplicadas após a separação de conjuntos de treinamento/validação e de testes separamente (evitando vazamento de dados).
 
 Um outro problema encontrado consiste na possibilidade de não ser visto algum modelo de carro (\textit{model}) no treinamento. Isso pode acontecer pois há uma quantidade muito grande de modelos diferentes,
 alguns deles com poucas instâncias. Para solucionar esse problema, ``forçou-se" a haver pelo menos uma instância de cada modelo de veículo no conjunto de treinamento, antes de realizar a separação de
@@ -215,15 +215,15 @@ Com esses dados revisitados, a seguir seguem os resultados obtidos pelos modelos
       \rowcolor{lightgray}
       \textbf{Modelo} & \textbf{Média dos MSE} & \textbf{Desvio Padrão dos MSE} \\
       \hline
-      kNN & 5,8602 & 2,5918 \\
+      kNN & 3,3227 & 1,3120 \\
       \hline
-      \textit{Random Forest} & 1,7187 & 0,6963 \\
+      \textit{Random Forest} & 1,8084 & 1,0998 \\
       \hline
-      Regressão Linear & 1,5259 & 0,5408 \\
+      Regressão Linear & 1,4442 & 0,5086 \\
       \hline
-      Redes Neurais & 1,1651 & 0,6098 \\
+      Redes Neurais & 1,1889 & 0,4046 \\
       \hline
-      SVM & 2,9694 & 1,0808 \\
+      SVM & 3,9311 & 1,6636 \\
       \hline
   \end{tabular}
   \caption{\label{table:model_summary} Médias e Desvios Padrões dos MSE}
@@ -240,9 +240,8 @@ a \textbf{\textit{Random Forest}}, a \textbf{Regressão Linear} e as \textbf{Red
 as configurações básicas de hiperparâmetros, esses foram os três mais promissores.
 
 Dentre esses, fica claro que os mais eficientes nesta tarefa foram o algoritmo de Regressão Linear e o modelo de Redes Neurais, visto que os erros da \textit{Random Forest} são mais elevados no geral quando
-comparado com esses últimos dois. Mesmo que as Redes Neurais apresentem média melhor do que a Regressão Linear, o desvio padrão da Regressão Linear é melhor comparado ao das Redes Neurais. O \textit{box plot}
-acima reforça que o viés do erro da Regressão Linear é mais concentrado, próximo de um valor estável para este teste. Por conta dessas razões, serão aprofundados a \textit{Random Forest}, o Regressor
-Linear e as Redes Neurais, com enfase nos últimos dois.
+comparado com esses últimos dois. Mesmo que as Redes Neurais apresentem média e desvio padrão melhores do que a Regressão Linear, o \textit{box plot} acima reforça que o viés do erro da Regressão Linear é um
+pouco mais concentrado, próximo de um valor estável para este teste. Por conta dessas razões, serão aprofundados a \textit{Random Forest}, o Regressor Linear e as Redes Neurais, com enfase nos últimos dois.
 
 \section{Otimização de Hiperparâmetros}
 
