@@ -9,7 +9,7 @@ from sklearn.svm import SVR
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import StandardScaler, MinMaxScaler
+from sklearn.preprocessing import MinMaxScaler
 
 from sklearn.metrics import mean_squared_error
 
