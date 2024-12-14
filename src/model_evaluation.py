@@ -34,7 +34,7 @@ def evaluate_model(method, X_train, X_val, y_train, y_val, random_state):
     # Preprocessor will be applied to every dataset
     preprocessor = ColumnTransformer([
         ("num", StandardScaler(), numerical_features),
-        ("cat", OneHotEncoder(), categorical_features)
+        ("cat", OneHotEncoder(handle_unknown='infrequent_if_exist'), categorical_features)
     ])
     # Select model and configuration for use in the pipeline
     match method:
