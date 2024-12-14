@@ -116,7 +116,7 @@ em um gráfico de setores.
 \end{figure}
 
 Com ele, é perceptível que talvez seja necessário agrupar as classes de veículos e outros atributos que contenham classes com muito poucos representantes, como \textit{midsize station wagon},
-por exemplo, em uma classe geral chamada \textit{others}. Porém, isso será melhor analisado, se necessário, na segunda etapa do trabalho. No entanto, algo que é necessário é a codificação dos
+por exemplo, em uma classe geral chamada \textit{others}. Porém, essa discussão será retomada na \autoref{subsec:revisit_pre}. No entanto, algo que é necessário é a codificação dos
 atributos categóricos em numéricos para padronizar a entrada numérica dos modelos.
 
 Por fim, analisou-se a Correlação de Pearson entre os atributos numéricos através do \textit{heatmap} abaixo:
@@ -179,6 +179,7 @@ disso, foram feitas diversas representações dessa métrica para obter maior co
 \section{\textit{Spot-checking} de Algoritmos}
 
 \subsection{Revisitando os Dados após o Pré-processamento}
+\label{subsec:revisit_pre}
 
 Com toda a metodologia explicada, voltar-se-á ao conjunto de dados pré-processados para realizar uma breve revisão dos dados de treinamento/validação. Primeiramente, após a remoção de \textit{outliers}, redução de dimensionalidade
 e exclusão de instâncias de carros elétricos, gerou-se o seguinte gráfico de distribuição da saída a ser predita:
@@ -198,6 +199,10 @@ Agora observa-se que os dados quase se distribuem em formato de uma gaussiana. A
 \end{figure}
 
 Com a remoção dos atributos citados anteriormente, observa-se uma boa redução na correlação entre os atributos numéricos restantes. Algo que ajuda bastante a evitar a maldição da dimensionalidade.
+
+Sobre a questão do agrupamento de atributos categóricos muito esparsos, foi percebido que o desempenho já nesta etapa se tornou inferior quando aplicado o agrupamento em comparação com o desempenho atingido
+sem a aplicação desse pré-processamento (resultados com média aproximada de 1,5 e desvio padrão 0,5 de MSE passaram a mostrar resultados de mais de 2,5 de média e desvio padrão de mais de 1). Por conta disso,
+optou-se por não adotar essa técnica para este problema.
 
 \subsection{Sumarização dos Resultados}
 
