@@ -51,7 +51,7 @@ def evaluate_model(method, X_train, X_val, y_train, y_val, random_state):
         case "svm":
             model = SVR()
     # Pipeline applies the preprocessed dataset to the model for fitting
-    pipe = Pipeline([
+    pipe = Pipeline(steps=[
         ("preprocessor", preprocessor),
         ("regressor", model)
     ])
@@ -64,7 +64,7 @@ def evaluate_model(method, X_train, X_val, y_train, y_val, random_state):
 
     return mean_squared_error(y_val, model_prediction)
 
-def optimize_hyperparameters(method, X_train, X_val, y_train, y_val, kfolds, random_state):
+def optimize_hyperparameters(method, X_train, y_train, kfolds, random_state):
     # Preprocessing is sensitive to type
     # Separate analyzed features into numerical and categorical
     # As to apply preprocessing only to valid features
@@ -82,15 +82,17 @@ def optimize_hyperparameters(method, X_train, X_val, y_train, y_val, kfolds, ran
     match method:
         case "random_forest":
             hyperparameters = {
-                "n_estimators": np.arange(50, 500, 50),
-                "cpp_alpha": np.arange(0, 0.75, 0.05),
+                "regressor__n_estimators": np.arange(300, 500, 25),
+                "regressor__ccp_alpha": np.arange(0, 0.4, 0.025),
             }
             model = RandomForestRegressor(random_state=random_state)
         case "neural_networks":
             hyperparameters = {
-                "hidden_layer_sizes": [(100,), (50, 100), (50, 50), (100, 100), (50, 100, 50)],
+                "regressor__solver": ['lbfgs', 'adam'],
+                "regressor__hidden_layer_sizes": [(25,), (50,), (100,), (25, 50, 25), (50, 50, 25), (50, 100),
+                                                  (50, 50), (100, 100), (50, 100, 50), (100, 100, 100)],
             }
-            model = MLPRegressor(early_stopping=True, n_iter_no_change=5, max_iter=2500, random_state=random_state)
+            model = MLPRegressor(max_iter=2500, random_state=random_state)
     
     # Pipeline applies the preprocessed dataset to the model for fitting
     pipe = Pipeline([
