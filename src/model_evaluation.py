@@ -13,6 +13,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import GridSearchCV
 
+from sklearn.metrics import mean_absolute_error
 from sklearn.metrics import mean_squared_error
 
 def generate_train_validation_sets(train_indexes, validation_indexes, X_train, X_mandatory, y_train, y_mandatory):
@@ -107,3 +108,23 @@ def optimize_hyperparameters(method, X_train, y_train, kfolds, random_state):
     clf.fit(X_train, y_train)
 
     return clf.best_params_, clf.best_score_
+
+def final_training(X_opt, y_opt, model):
+
+    numerical_features = X_opt.select_dtypes(include=['int64', 'float64']).columns
+    categorical_features = X_opt.select_dtypes(include=['object', 'bool', 'string']).columns
+
+    preprocessor = ColumnTransformer([
+        ("num", MinMaxScaler(), numerical_features),
+        ("cat", OneHotEncoder(handle_unknown='infrequent_if_exist'), categorical_features)
+    ])
+
+    modelPipe = Pipeline(steps=[
+        ("preprocessor", preprocessor),
+        ("regressor", model)
+    ])
+
+    # Fitting the pipeline
+    modelPipe.fit(X_opt, y_opt)
+
+    return modelPipe
