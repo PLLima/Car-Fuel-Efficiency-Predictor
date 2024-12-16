@@ -24,6 +24,7 @@
 \usepackage[hypcap=true]{caption}
 \usepackage{enumitem}
 \usepackage{soul}
+\usepackage{ragged2e}
 
 \usepackage[backend=biber,]{biblatex}
 \addbibresource{reference.bib}
@@ -301,22 +302,133 @@ Após a primeira iteração de teste, o modelo que mais pontuou foi a \textit{Ra
     Ajustou-se de 300 a 500 árvores, em intervalos de 25, para tentar convergir em um valor ótimo.
 \end{itemize}
 
-Os testes reforçaram os achados iniciais, onde a melhor configuração teve como parâmetros \textit{ccp\_alpha} 0 e \textit{n\_estimators} 400.
+Os testes reforçaram os achados iniciais, onde a melhor configuração teve como parâmetros \textit{ccp\_alpha} 0 e \textit{n\_estimators} 400. Como último caso de teste, foram testados hiperparâmetros de pré-poda na avaliação da árvore, sem obter resultado melhor.
 
 \subsubsection{Regressão Linear}
 Devido a ausência de hiperparâmetros, não foi realizada uma nova análise do modelo de regressão linear.
 
+Os testes podem ser resumidos na seguinte tabela.
+
+\noindent
+\begin{tabular}{|>{\centering\arraybackslash}m{0.2\linewidth}|>{\centering\arraybackslash}m{0.05\linewidth}|>{\centering\arraybackslash}m{0.55\linewidth}|>{\centering\arraybackslash}m{0.2\linewidth}|}
+    \hline
+    \textbf{Modelo} & \textbf{Iter} & \textbf{best\_param} & \textbf{Pontuação} \\ [0.5ex]
+    \hline
+    \textbf{Redes Neurais} & \textbf{1} & \textbf{hidden\_layer\_sizes = (100,)}, \textbf{solver = adam}, \textbf{early\_stopping = True} & -7.7895\\ 
+    \hline
+    \textbf{Redes Neurais} & \textbf{2} & \textbf{hidden\_layer\_sizes = (25, 50, 25)}, \textbf{solver = lbfgs}, \textbf{early\_stopping = False} & -4.5575\\  
+    \hline
+    \textbf{Redes Neurais} & \textbf{3} & \textbf{hidden\_layer\_sizes = (25, 50, 25)}, \textbf{solver = lbfgs}, \textbf{early\_stopping = False} & -4.4675\\  
+    \hline
+    \textbf{Random Forest} & \textbf{1} & \textbf{n\_estimators = 400}, \textbf{ccp\_alpha = 0} & -3.1145\\ [1ex] 
+    \hline
+    \textbf{Random Forest} & \textbf{2} & \textbf{n\_estimators = 400}, \textbf{ccp\_alpha = 0} & -3.1145\\[1ex]
+    \hline
+\end{tabular}
+
 \section{Comparação de Desempenhos em Dados de Teste}
-Pela quantidade pequena de dados no conjunto de dados, foi escolhida fazer uma divisão dos dados utilizando 5-folds para determinação dos melhores hiperparâmetros, para então determinar o melhor desempenho global realizados pelos modelos de \textit{Redes-neurais}, \textit{Random Forest} e \textit{Regressão Linear} com os hiperparâmetros obtidos do capítulo \ref{sec: 5.1}.
+Devido à quantidade pequena de dados no conjunto de dados, foi escolhido fazer uma divisão dos dados utilizando 5-folds para determinação dos melhores hiperparâmetros, para então determinar o melhor desempenho global obtido pelos modelos de \textit{Redes-neurais}, \textit{Random Forest} e \textit{Regressão Linear} com os hiperparâmetros obtidos do capítulo \ref{sec: 5.1}.
+A configuração final dos modelos, portanto, foi:
 
+\begin{itemize}
+    \item \textbf{Redes Neurais}
+    hidden\_layer\_sizes = (25, 50, 25), solver = lbfgs, early\_stopping = False
+    \item \textbf{Random Forest}
+    n\_estimators = 400, ccp\_alpha = 0
+    \item \textbf{Regressão Linear}
+    NaN
+\end{itemize}
 
+Resultando na seguinte tabela das pontuações de cada modelo, utilizando a métrica de erro quadrático médio, para os conjuntos de treinamento e teste.
 
+\noindent
+\begin{tabular}{|>{\centering\arraybackslash}m{0.25\linewidth}|>{\centering\arraybackslash}m{0.325\linewidth}|>{\centering\arraybackslash}m{0.325\linewidth}|}
+    \hline
+      & \textbf{Pontuação no treino} & \textbf{Pontuação no teste}\\
+    \hline
+    \textbf{Random Forest} & \textbf{0.31373} & \textbf{1.87881}\\ 
+    \hline
+    \textbf{Regressão Linear} & \textbf{0.45362} & \textbf{1.61109}\\ 
+    \hline
+    \textbf{Redes Neurais} & \textbf{0.03381} & \textbf{2.26661}\\ 
+    \hline
+\end{tabular}
 
+Percebe-se que o melhor modelo encontrado para o problema foi o Regressor Linear. É possível observar comparando os MSE de teste e treinamento dos três modelos que eles sofreram de \textit{overfitting}, caracterizado por um desempenho muito bom no conjunto de treinamento mas baixo para o conjunto de teste, com a Rede Neural sendo a mais afetada. A regressão linear, apesar de ter apresentado o pior desempenho no conjunto de treinamento, apresentou o maior desempenho para o caso de teste, demonstrando um ponto positivo da simplicidade de sua implementação: a capacidade de generalizar.
 
-\section{Interpretação do Melhor Modelo}
+\section{Interpretação do Modelo}
 
+Como a Regressão Linear é a relação matemática entre uma variável dependente com as variáveis independentes do problema, é possível interpretar o modelo através da dos valores dos pesos que estão associados a cada variável independente. A ordem de grandeza dos pesos dita o quão significante cada variável é para a solução do problema, enquanto o sinal dita se a variável dependente irá aumentar ou diminuir à medida que a variável independente aumenta.
 
+\subsection{Obtenção dos Coeficientes}
+
+Como descrito na subseção \ref{subsec:pre-proc-de-dados}, a solução utilizada para trabalhar com um conjunto de dados heterogêneo com dados numéricos e categóricos foi aplicar a codificação \textit{One-Hot Encoding} para os atributos categóricos, transformando cada atributo em sua própria coluna, ou variável. No modelo de Regressão Linear cada variável tem seu próprio peso, o que implica que uma variável categórica que continha 15 diferentes valores possíveis, após o \textit{One-Hot Encoding}, será substituído por 15 coeficientes.
+
+Disso surge um novo desafio, como juntar estes coeficientes para possibilitar a visualização de como a categoria oficial impacta o modelo de regressão linear, levando em conta a polaridade (positivo e negativo) e a amplitude dos coeficientes. Para este fim, e para manter a simplicidade da regressão linear, foram somados todos os coeficientes de todas as variáveis, tanto categóricas quanto numéricas, resultando na seguinte tabela de coeficientes.
+
+\subsection{Resultados}
+
+\begin{tabular}{|>{\centering\arraybackslash}m{0.3\linewidth}|>{\centering\arraybackslash}m{0.4\linewidth}|}
+    \hline
+    \textbf{Variável} & \textbf{Coeficiente}\\
+    \hline
+    \textbf{\(X_{0}\)} & 26,28121\\
+    \hline
+    \textbf{\textit{cylinders}} & -8,79544\\
+    \hline
+    \textbf{\textit{displacement}} & -1,16860\\
+    \hline
+    \textbf{\textit{year}} & 1.49327 \\
+    \hline
+    \textbf{\textit{class}} & \(3.07753 \cdot 10^{-13}\)\\
+    \hline
+    \textbf{\textit{drive}} & \(1.00919 \cdot 10^{-13}\)\\
+    \hline
+    \textbf{\textit{fuel\_type}} & \(-1.63202 \cdot 10^{-13}\)\\
+    \hline
+    \textbf{\textit{make}} & \(1.03039 \cdot 10^{-12}\)\\
+    \hline
+    \textbf{\textit{model}} & \(2.15827 \cdot 10^{-13}\)\\
+    \hline
+    \textbf{\textit{transmission}} & \(-5.49560 \cdot 10^{-14}\)\\
+    \hline
+\end{tabular}
+
+\subsection{Análise dos Resultados} \label{subsec: analiseresultados}
+Percebe-se que foi dada uma importância maior aos dados numéricos que os categóricos, com cilindros sendo o mais relevante dentre eles, seguidos de deslocamento e ano de fabricação. A soma dos coeficientes dos dados categóricos foram dados um peso muito baixo, na ordem de \(10^{-12}\) e portanto não impactam o modelo. Uma comparação com gráficos feitos por pesquisas independentes nos permite avaliar o quão realistas foram os pesos.
+
+\clearpage
+
+\begin{figure}[h!]
+    \centering
+    \begin{minipage}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/plots/independent/MPGbyCylinders.png} 
+        \caption{\centering Milhas por galão por cilíndro.}
+        \label{fig: MPGpCylinder}
+    \end{minipage} \hfill
+    \begin{minipage}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/plots/independent/MPGbyYear.png}
+        \caption{\centering Milhas por galão por ano}
+        \label{fig: MPGbyYear}
+    \end{minipage}
+\end{figure}
+
+O gráfico \ref{fig: MPGpCylinder} mostra que o consumo aumenta em média 4 milhas por galão a cada cilindro, enquanto o gráfico \ref{fig: MPGbyYear} mostra que em 15 anos, ocorreu um aumento de 30\% da eficiência dos combustíveis em carros, o que resulta em aproximadamente 0,5 milhas por galão ao ano, o que confirma os achados da regressão linear, onde o coeficiente atribuído ao número de cilindros é 8 vezes mais importante que o ano, portanto, enquanto a eficiência aumenta a cada ano, ela diminui a cada cilindro.
+
+O deslocamento do carro tem uma relação direta com a quantidade de combustível utilizada, mas também com a quantidade de cilindros no carro, o que pode explicar o valor consideravelmente neutro que a variável teve.
+
+A baixa importância dada aos atributos categóricos pode ser atribuída tanto à baixa correlação que existe entre estas variáveis independentes e a variável dependente, quanto devido ao modelo utilizado para juntar os coeficientes resultantes do \textit{One-Hot Encoder} ser imprópria, ou pelo grau da dimensionalidade que trazem para o problema, considerando que algumas categorias foram separadas em centenas pelo \textit{Encoder}, diminuindo sua relevância preditiva.
 \section{Conclusões Finais}
+Apesar do resultado ser satisfatório, a eficiência do preditor poderia ser melhorada utilizando estratificação no conjunto de treinamento, validação e teste, porém, o conjunto misto de dados numéricos e categóricos impediu o uso do parâmetro \textit{stratify} do \textit{train\_test\_split}, por tentar manter a distribuição de números raros e infrequentes das categorias numéricas nos conjuntos de treino e teste. A observabilidade poderia ser melhorada utilizando métodos para junção dos coeficientes categóricos mais adequados que a soma, como por exemplo, uma média ponderada de todos os coeficientes, ou um \textit{box plot} que demonstre o valor médio e o desvio de todos os coeficientes dentro de cada categoria.
+Apesar destas dificuldades, o modelo de Regressão Linear mostrou-se muito capaz de adaptação ao problema de predição de consumo de combustível, apesar da sua simplicidade. Como visto na subseção \ref{subsec: analiseresultados}, o modelo é facilmente observável, permitindo afirmar que o modelo foi capaz de identificar padrões reais do problema utilizando somente as \textit{features} numéricas, classificando novos casos com precisão e superando modelos mais complexos e vulneráveis a \textit{overfitting}.
+
+
+FAZER REFERENCIA DOS GRAFICOS, %https://www.researchgate.net/figure/Multiple-plots-showing-a-relation-between-the-number-of-cylinders-vs-gas-mileage-MPG_fig1_319328127
+%https://www.energy.gov/eere/vehicles/articles/fotw-1177-march-15-2021-preliminary-data-show-average-fuel-economy-new-light
+FAZER REFERENCIA DOS SITES DO SCIKIT LEARN QUE TIRAMOS OS PARAMETROS, SÃO OS DOIS ÚLTIMOS DA BIBLIOGRAFIA 
+
 
 \clearpage
 \printbibliography
