@@ -1,16 +1,18 @@
 # Fdb version 4
-["biber main"] 0 "main.bcf" "main.bbl" "main" 1734149047.93464 -1
-  "main.bcf" 1734149047.86379 108301 8ea91f57d70ed71b75cbbe2f50ca85f7 "pdflatex"
-  "reference.bib" 1731905748.05422 2455 d43196af504bb3828dea2ae2bb155fc7 ""
+["biber main"] 1734318015.02997 "main.bcf" "main.bbl" "main" 1734318018.43667 0
+  "main.bcf" 1734318018.36709 108301 8ea91f57d70ed71b75cbbe2f50ca85f7 "pdflatex"
+  "reference.bib" 1734305246.95943 2957 00802aafd8dd086dd288217160200fc2 ""
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1734149046.63567 "/home/pllima0909/Documents/Git/INF01017-Machine-Learning/Car-Fuel-Efficiency-Predictor/report/main.tex" "main.pdf" "main" 1734149047.93497 0
+["pdflatex"] 1734318017.18498 "/home/pllima0909/Documents/Git/INF01017-Machine-Learning/Car-Fuel-Efficiency-Predictor/report/main.tex" "main.pdf" "main" 1734318018.43699 0
   "/etc/texmf/web2c/texmf.cnf" 1728302084.72637 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/pllima0909/Documents/Git/INF01017-Machine-Learning/Car-Fuel-Efficiency-Predictor/report/main.tex" 1734149046.44295 15883 0566511dafb6e78d887145059da83f42 ""
+  "/home/pllima0909/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk" 1731633889.42296 11524 46404977bb45dc231b19acb652bcda32 ""
+  "/home/pllima0909/Documents/Git/INF01017-Machine-Learning/Car-Fuel-Efficiency-Predictor/report/main.tex" 1734318014.74712 21454 e2c9dd2c4fc4ecd8876c8cbce7357769 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ectt1000.tfm" 1136768653 1536 06717a2b50de47d4087ac0e6cd759455 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1136768653 1324 c910af8c371558dc20f2d7822f66fe64 ""
@@ -25,6 +27,8 @@
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb" 1248133631 36554 b67dc2cfa451409e100b3fcf5f506509 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb" 1248133631 32362 179c33bbf43f19adbb3825bb4e36e57a ""
+  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1248133631 32762 224316ccc9ad3ca0423a14971cfa7fc1 ""
+  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb" 1248133631 32716 08e384dc442464e7285e891af9f45947 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb" 1248133631 37944 359e864bd06cde3b1cf57bb20757fb06 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb" 1248133631 31099 c85edf1dd5b9e826d67c9c7293b6786c ""
   "/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1461363279 71627 94eb9990bed73c364d7f53f960cc8c5b ""
@@ -132,12 +136,12 @@
   "images/plots/pie_charts/pure_car_classes.png" 1731900068.7174 68189 392b02c688530ac5d4b0281e389cdb8c ""
   "images/plots/violin_plots/no_outliers_combination_mpg.png" 1731900068.7524 42405 0545cc0fd8adaf6a515aa21944a4b263 ""
   "images/plots/violin_plots/pure_combination_mpg.png" 1731900068.7524 34510 dd941cb6961886bca980dc072857f6b5 ""
-  "main.aux" 1734149047.86179 5421 5abf2603b05d87c19bf1da126bedbc00 "pdflatex"
-  "main.bbl" 1731905748.85324 9342 5090e21e1d42b6630e03a1cc7fe5e439 "biber main"
-  "main.out" 1734149047.86279 2829 55ea58c6e931aece9fcd74a7c19f4657 "pdflatex"
-  "main.run.xml" 1734149047.86479 2338 bc4e4d191fc7d6cf8344f373806f71a7 "pdflatex"
-  "main.tex" 1734149046.44295 15883 0566511dafb6e78d887145059da83f42 ""
-  "main.toc" 1734149047.86479 1258 a831df143fd133e211bb2aa194d9715a "pdflatex"
+  "main.aux" 1734318018.36409 6007 d23dd144c79d0f0a27c577aa0d5d5977 "pdflatex"
+  "main.bbl" 1734318015.79511 9342 5090e21e1d42b6630e03a1cc7fe5e439 "biber main"
+  "main.out" 1734318018.36609 3122 34f36fe03e8058e08dab64219b067c61 "pdflatex"
+  "main.run.xml" 1734318018.36709 2338 bc4e4d191fc7d6cf8344f373806f71a7 "pdflatex"
+  "main.tex" 1734318014.74712 21454 e2c9dd2c4fc4ecd8876c8cbce7357769 ""
+  "main.toc" 1734318018.36709 1582 715c0d1ce411e8458e0665d3bbc490a9 "pdflatex"
   (generated)
   "main.aux"
   "main.bcf"
