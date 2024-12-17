@@ -252,8 +252,8 @@ muito estável para este teste. Por conta dessas razões, serão aprofundados a 
 \subsection{Análise dos Hiperparâmetros Possíveis}
 
 O primeiro passo para a otimização dos modelos selecionados foi avaliar os hiperparâmetros relevantes para o conjunto de dados e o problema de regressão. Considerando o tamanho reduzido do conjunto de dados
-(550 instâncias), a dimensionalidade de 8 atributos preditores e a baixa complexidade do problema, foi realizada uma análise inicial dos parâmetros com base na documentação oficial do \texttt{scikit learn}
-de acordo com as páginas \cite{RFR} e \cite{Regression}. Através dela, utilizou-se todo o conjunto de dados de treinamento e validação unificados (não incluindo o conjunto de testes) e o método \texttt{GridSearchCV()}
+(550 instâncias), a dimensionalidade de 9 atributos preditores e a baixa complexidade do problema, foi realizada uma análise inicial dos parâmetros com base na documentação oficial do \texttt{scikit learn}
+de acordo com as páginas \cite{RFR} e \cite{Regression}. Através delas, utilizou-se todo o conjunto de dados de treinamento e validação unificados (não incluindo o conjunto de testes) e o método \texttt{GridSearchCV()}
 da biblioteca para seguir com essas avaliações.
 \subsubsection{Redes Neurais}
 
@@ -324,13 +324,13 @@ Os resultados desta etapa podem ser resumidos na seguinte tabela:
       \rowcolor{lightgray}
       \textbf{Modelo} & \textbf{Iteração} & \textbf{Melhores Parâmetros} & \textbf{Pontuação} \\
       \hline
-      Redes Neurais & 1 & \texttt{hidden\_layer\_sizes} = (100), \newline \texttt{solver} = \texttt{adam}, \newline \texttt{early\_stopping} = \texttt{True} & -7,7895 \\
+      Redes Neurais & 1 & \texttt{hidden\_layer\_sizes} = (100) \newline \texttt{solver} = \texttt{adam} \newline \texttt{early\_stopping} = \texttt{True} & -7,7895 \\
       \hline
-      Redes Neurais & 2 & \texttt{hidden\_layer\_sizes} = (25, 50, 25), \newline \texttt{solver} = \texttt{lbfgs}, \newline \texttt{early\_stopping} = \texttt{False} & -4,4675 \\
+      Redes Neurais & 2 & \texttt{hidden\_layer\_sizes} = (25, 50, 25) \newline \texttt{solver} = \texttt{lbfgs} \newline \texttt{early\_stopping} = \texttt{False} & -4,4675 \\
       \hline
-      \textit{Random Forest} & 1 & \texttt{n\_estimators} = 400, \newline \texttt{ccp\_alpha} = 0 & -3,1145 \\
+      \textit{Random Forest} & 1 & \texttt{n\_estimators} = 400 \newline \texttt{ccp\_alpha} = 0 & -3,1145 \\
       \hline
-      \textit{Random Forest} & 2 & \texttt{n\_estimators} = 400, \newline \texttt{ccp\_alpha} = 0 & -3,1145 \\
+      \textit{Random Forest} & 2 & \texttt{n\_estimators} = 400 \newline \texttt{ccp\_alpha} = 0 & -3,1145 \\
       \hline
   \end{tabular}
   \caption{\label{table:optimization_summary} Resumo das Otimização de Hiperparâmetros}
@@ -343,7 +343,7 @@ Além disso, percebe-se uma queda nos resultados aqui quando comparado com os re
 tipo, essas métricas já são válidas.
 
 \section{Comparação de Desempenhos em Dados de Teste}
-Devido à quantidade pequena de dados no conjunto de dados, foi escolhido fazer uma divisão dos dados utilizando 5-folds para determinação dos melhores hiperparâmetros, para então determinar
+Devido à quantidade pequena de dados no conjunto de dados, foi escolhido fazer uma divisão dos dados utilizando \textit{5-folds} para determinação dos melhores hiperparâmetros, para então determinar
 o melhor desempenho global obtido pelos modelos de Redes Neurais, \textit{Random Forest} e Regressão Linear com os hiperparâmetros obtidos no capítulo \ref{sec: 5.1}. As configurações finais dos
 modelos, portanto, foram:
 
@@ -404,7 +404,7 @@ sinal dita se a variável dependente (atributo alvo) aumentará ou diminuirá à
 
 Como descrito na subseção \ref{subsec:pre-proc-de-dados}, a solução utilizada para trabalhar com um conjunto de dados heterogêneo com dados numéricos e categóricos foi aplicar a codificação \textit{One-Hot Encoding}
 para os atributos categóricos, transformando cada categoria em sua própria coluna, ou atributo. No modelo de Regressão Linear, cada variável tem seu próprio peso, o que implica que uma variável categórica que continha
-15 diferentes valores possíveis, após o \textit{One-Hot Encoding}, será substituído por 15 coeficientes. No total, essa etapa de pré-processamento transformou os 5 atributos categóricos em 320 atributos codificados.
+15 diferentes valores possíveis, após o \textit{One-Hot Encoding}, será substituído por 15 coeficientes. No total, essa etapa de pré-processamento transformou os 6 atributos categóricos em 320 atributos codificados.
 
 Disso surgiu um novo desafio: como agrupar esses coeficientes para possibilitar a visualização de como o atributo original impacta o modelo de Regressão Linear, levando em conta a polaridade (positiva e negativa) e a amplitude
 dos coeficientes? Para esse fim e para manter a simplicidade da Regressão Linear, foram somados todos os coeficientes de todas as categorias de cada atributo categórico, e agrupou-se de forma direta os atributos numéricos e o intercepto,
