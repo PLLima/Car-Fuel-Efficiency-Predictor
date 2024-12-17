@@ -156,6 +156,10 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/outlines/outlines.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/outlines/outlines.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
 INPUT /usr/share/texlive/texmf-dist/tex/generic/soul/soul.sty
 INPUT /usr/share/texlive/texmf-dist/tex/generic/soul/soul.sty
 INPUT /usr/share/texlive/texmf-dist/tex/generic/soul/soul-ori.sty
@@ -172,8 +176,6 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/logreq/logreq.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/logreq/logreq.def
 INPUT /usr/share/texlive/texmf-dist/tex/latex/logreq/logreq.def
 INPUT /usr/share/texlive/texmf-dist/tex/latex/logreq/logreq.def
-INPUT /usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
-INPUT /usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/biblatex/blx-dm.def
 INPUT /usr/share/texlive/texmf-dist/tex/latex/biblatex/blx-dm.def
 INPUT /usr/share/texlive/texmf-dist/tex/latex/biblatex/blx-dm.def
