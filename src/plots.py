@@ -36,8 +36,8 @@ def plot_corr_heatmap(dataset, title, filename):
 
 def plot_residuals(residuals_train, residuals_test, y_train, y_test, title, filename):
     df = {
-        'Predições': pd.concat(y_train, y_test),
-        'Resíduos': pd.concat(residuals_train, residuals_test),
+        'Predições': np.concatenate((y_train, y_test)),
+        'Resíduos': np.concatenate((residuals_train, residuals_test)),
         'Dataset': ['Treinamento'] * len(y_train) + ['Teste'] * len(y_test)
     }
     plt.figure(figsize=(10, 6))
