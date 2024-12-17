@@ -43,3 +43,18 @@ def plot_scatterplot(model, modelname, y_pred, y_test, title, filename):
     plt.legend()
     plt.grid(True)
     plt.savefig(f'plots/scatter_plots/{filename}.png')
+
+def plot_MSEs(random_forest_mse, linear_regression_mse, neural_networks_mse):
+    plt.figure(figsize=(10, 6))
+    plt.bar(['Random Forest', 'Linear Regressor', 'Neural Networt (MLP)'], [random_forest_mse, linear_regression_mse, neural_networks_mse])
+    plt.ylabel('Erro Quadrático Médio (MSE)')
+    plt.title('Erros Quadráticos Médios dos Modelos Otimizados')
+    plt.legend()
+    plt.savefig('plots/Test_MSEs.png')
+
+def plot_model_weights(names, values):
+    plt.figure(figsize=(10, 6))
+    plt.bar(names, values)
+    plt.title('Pesos dados pelo modelo aos atributos de entrada')
+    plt.legend()
+    plt.savefig('plots/atribute_weights.png')
