@@ -31,6 +31,8 @@
 
 % Set section numbering from 1.1
 \renewcommand{\thesection}{\arabic{section}.1}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
 
 \let\oldsection\section
 \renewcommand\section{\clearpage\oldsection}
@@ -177,7 +179,7 @@ A métrica de avaliação utilizada foi o \textit{Mean Squared Error} (MSE). O g
 de natureza muito similar, já foi realizada a limpeza de \textit{outliers} que poderiam prejudicar os resultados dessas medições e essa é uma métrica que apresenta convergência mais rápida (Nirajan Acharya \cite{MSEAndMAE}). Além
 disso, foram feitas diversas representações dessa métrica para obter maior confiança nos resultados obtidos.
 
-\section{\textit{Spot-checking} de Algoritmos}
+\section{\textit{Spot-checking} de Algoritmos} \label{sec:spot_checking}
 
 \subsection{Revisitando os Dados após o Pré-processamento}
 \label{subsec:revisit_pre}
@@ -248,83 +250,96 @@ pouco mais concentrado, próximo de um valor estável para este teste. Por conta
 
 \subsection{Análise dos Hiperparâmetros Possíveis}
 
-O primeiro passo para a otimização dos modelos selecionados foi avaliar os hiperparâmetros relevantes para o conjunto de dados e o problema de regressão. Considerando o tamanho reduzido do conjunto de dados (550 instâncias), a dimensionalidade de 8 atributos preditores e a baixa complexidade do problema, foi realizada uma análise inicial dos parâmetros com base na documentação oficial do scikit-learn \ref{}.
+O primeiro passo para a otimização dos modelos selecionados foi avaliar os hiperparâmetros relevantes para o conjunto de dados e o problema de regressão. Considerando o tamanho reduzido do conjunto de dados
+(550 instâncias), a dimensionalidade de 8 atributos preditores e a baixa complexidade do problema, foi realizada uma análise inicial dos parâmetros com base na documentação oficial do \texttt{scikit learn}
+de acordo com as páginas \cite{RFR} e \cite{Regression}. Através dela, utilizou-se todo o conjunto de dados de treinamento e validação unificados (não incluindo o conjunto de testes) e o método \texttt{GridSearchCV()}
+da biblioteca para seguir com essas avaliações.
+\subsubsection{Redes Neurais}
 
-\subsubsection{Redes-neurais}
 Foram investigados os seguintes hiperparâmetros:
 \begin{itemize}
-    \item \textit{hidden\_layer\_sizes}
+    \item \texttt{hidden\_layer\_sizes}:
     Devido à dificuldade de interpretabilidade em redes neurais, optou-
-    se por variar \textit{hidden\_layer\_sizes} para verificar se a configuração padrão (100,) oferecia a complexidade adequada. Foram testadas as configurações (50,100), (50,50), (100,100), (50,100,50) e (100,).
-    \item \textit{early\_stopping}
-    Early\_stopping permite encerrar o treinamento prematuramente caso a melhoria do modelo fique abaixo de um modelo predefinido \textit{tol}, cujo padrão é ${10^{-4}}$, ou por 10 rodadas sem melhorias. Para agilizar o processo de treinmaneot, ativou-se o \textit{early\_stopping}.
-    \item \textit{max\_iter}
-    O parâmetro max\_iter foi fixado em 2500, valor mínimo indetificado na Etapa I do trabalho para garantir a convergência da rede neural.
-    \item \textit{activation}
-    Foi optado por seguir com o modelo padrão linear de \textit{activation}, "\textit{relu}", pois a função linear de ativação é adequada para problemas de regressão \ref{} %https://www.turing.com/kb/how-to-choose-an-activation-function-for-deep-learning#choosing-the-right-activation-function-for-a-neural-network
-    \item \textit{Demais parâmetros}
-    Os parâmetros restantes foram desconsiderados devido à dependência ao \textit{solver}, não sendo compatíveis para ambos \textit{adam} e \textit{lbfgs}, resultariam num aumento considerável da quantidade de testes.
+    se por variar \texttt{hidden\_layer\_sizes} para verificar se a configuração padrão (100) oferecia a complexidade adequada. Foram testadas as configurações (50, 100), (50, 50), (100, 100), (50, 100, 50) e (100).
+    \item \texttt{early\_stopping}:
+    Esse hiperparâmetro permite encerrar o treinamento prematuramente caso a melhoria do modelo fique abaixo de um modelo predefinido (\texttt{tol}), cujo padrão é ${10^{-4}}$, ou por 10 rodadas sem melhorias. Para agilizar o processo de treinamento, ativou-se o \texttt{early\_stopping}.
+    \item \texttt{max\_iter}:
+    Parâmetro fixado em 2500, valor mínimo identificado na etapa anterior do trabalho para garantir a convergência do modelo.
+    \item \texttt{activation}:
+    Foi optado por seguir com o modelo padrão linear de \texttt{activation} (\texttt{relu}) pois a função linear de ativação é adequada para problemas de regressão \cite{AF}.
+    \item Demais parâmetros:
+    Os parâmetros restantes foram desconsiderados devido à dependência com o \texttt{solver}, não sendo compatíveis para com o \texttt{adam} ou o \texttt{lbfgs}. Isso também resultaria em um aumento considerável da quantidade de testes.
 \end{itemize}
 
-Após a primeira rodada de testes, o \textit{hidden\_layer\_sizes} que melhor pontuou foi o valor padrão de (100,). Por ser o valor mais baixo previsto na primeira rodada de teste, para a segunda iteração, reduziu-se a complexidade da rede e modificou-se o \textit{solver} padrão \textit{adam} para explorar novas alternativas.
+Após a primeira rodada de testes, o \texttt{hidden\_layer\_sizes} que melhor pontuou foi o valor padrão de (100). Por ser o valor mais baixo previsto na primeira rodada de teste, para a segunda iteração, reduziu-se a complexidade da rede e modificou-se o \texttt{solver} padrão \texttt{adam} para explorar novas alternativas.
 
 Na segunda iteração, foram testados:
 
 \begin{itemize}
-    \item \textit{solver}
-    Além do solucionador padrão de redes neurais \textit{adam} (rápido e eficiente tanto para modelos grandes quanto pequenos), testou-se o \textit{lbfgs}, recomendado na documentação oficial do MLPRegressor por convergir e ter performance melhor para datasets menores (com menos de milhares de instâncias).
-    \item \textit{hidden\_layer\_sizes}
-    Foram exploradas configurações mais simples, incluindo (25,), (50,), (25,50,25),
-    (50,50,25), (100,100,100), mantendo as opções mais complexas para o  mantendo as opções mais complexas para serem aplicadas também ao novo solver \textit{lbfgs}. Os valores atualizados de \textit{hidden\_layer\_sizes} para a segunda iteração de teste foram (25,), (50,), (100,), (25,50,25),(50,50,25),(50,100), (50,50), (100,100), (50,100,50) e (100,100,100)
-    \item \textit{early\_stopping}
-    A ativação do \textit{early\_stopping} diminuiu o tempo de treinamento, mas a pontuação não satisfatória atribuída ao modelo resultante da primeira iteração foi atribuída à terminação prematura do modelo antes da melhor convergência, sendo desativado em seguida.
+    \item \texttt{solver}:
+    Além do solucionador padrão de redes neurais \texttt{adam} (rápido e eficiente tanto para modelos grandes, quanto pequenos), testou-se o \texttt{lbfgs}, recomendado na documentação oficial do \textit{MLPRegressor} \cite{MLPR} por convergir e ter performance melhor para datasets menores (com menos de milhares de instâncias).
+    \item \texttt{hidden\_layer\_sizes}:
+    Foram exploradas configurações mais simples, incluindo (25), (50), (25, 50, 25),
+    (50, 50, 25), (50,100), (50,50), (100,100), (50,100,50) e (100, 100, 100), mantendo as opções mais complexas para serem aplicadas também ao novo \texttt{solver} \texttt{lbfgs}.
+    \item \texttt{early\_stopping}:
+    A ativação do \texttt{early\_stopping} diminuiu o tempo de treinamento, mas a pontuação não satisfatória atribuída ao modelo resultante da primeira iteração foi atribuída à terminação prematura do modelo antes da melhor convergência, sendo desativado em seguida.
 \end{itemize}
 
-A segunda iteração demonstrou uma eficiência maior do solucionador \textit{lbfgs} em comparação ao \textit{adam}. O modelo com maior pontuação teve como parâmetros o \textit{solver lbfgs} com \textit{hidden\_layer\_sizes} de (25, 50, 25). Como \textit{lbfgs} não possuí nenhum parâmetro \textit{solver-specific}, não foi realizada nenhuma outra iteração de teste.
+A segunda iteração demonstrou uma eficiência maior do solucionador \texttt{lbfgs} em comparação ao \texttt{adam}. O modelo com maior pontuação teve como parâmetros o \texttt{solver} \texttt{lbfgs} com \texttt{hidden\_layer\_sizes} de (25, 50, 25). Como \texttt{lbfgs} não possui nenhum parâmetro \textit{solver-specific}, não foi realizada nenhuma outra iteração de teste.
 
-\subsubsection{Random Forest}
+\subsubsection{\textit{Random Forest}}
 Os hiperparâmetros analisados foram:
 \begin{itemize}
-    \item \textit{ccp\_alpha}
-    Avaliou-se o uso da pós poda da árvore para mitigar overfitting, variando o valor de \textit{ccp-aplha} de 0 a 0,75 em intervalos de 0,05. 
-    \item \textit{n\_estimators}
+    \item \texttt{ccp\_alpha}:
+    Avaliou-se o uso da pós poda da árvore para mitigar \textit{overfitting}, variando o valor de \texttt{ccp-aplha} de 0 a 0,75 em intervalos de 0,05. 
+    \item \texttt{n\_estimators}:
     Para verificar a diversidade da floresta, o número de árvores variou de 50 a 500 em intervalos de 50.
-    \item \textit{Outros parâmetros}
-    O valor padrão de criterion (”squared error”) foi mantido por ser compatível com a métrica sendo utilizada para avaliação dos modelos, o \textit{MSE}. Parâmetros como \textit{max\_depth} foram desconsiderados, optando-se utilizar a pós poda invés da pré poda.
+    \item Outros parâmetros:
+    O valor padrão de \texttt{criterion} (\texttt{squared error}) foi mantido por ser compatível com a métrica sendo utilizada para avaliação dos modelos, o \textit{MSE}. Parâmetros como \texttt{max\_depth} foram desconsiderados, optando-se utilizar a pós-poda ao invés da pré-poda.
 \end{itemize}
 
-Após a primeira iteração de teste, o modelo que mais pontuou foi a \textit{Random Forest} com parâmetro \textit{ccp\_alpha} 0 e \textit{n\_estimators} 400, resultando numa busca para convergir os valores escolhidos.
+Após a primeira iteração de teste, o modelo que mais pontuou foi a \textit{Random Forest} com parâmetro \texttt{ccp\_alpha} 0 (sem poda) e \texttt{n\_estimators} 400, resultando em uma busca para convergir os valores escolhidos. Já na segunda iteração:
 
 \begin{itemize}
-    \item \textit{ccp\_alpha}
+    \item \texttt{ccp\_alpha}:
     Variou-se de 0 a 0,4 em intervalos de 0,025 para confirmar se a ausência de poda era realmente ideal.
-    \item \textit{n\_estimators}
+    \item \texttt{n\_estimators}:
     Ajustou-se de 300 a 500 árvores, em intervalos de 25, para tentar convergir em um valor ótimo.
 \end{itemize}
 
-Os testes reforçaram os achados iniciais, onde a melhor configuração teve como parâmetros \textit{ccp\_alpha} 0 e \textit{n\_estimators} 400. Como último caso de teste, foram testados hiperparâmetros de pré-poda na avaliação da árvore, sem obter resultado melhor.
+Os testes reforçaram os achados iniciais, onde a melhor configuração teve como parâmetros \texttt{ccp\_alpha} 0 (sem poda) e \texttt{n\_estimators} 400. Como último caso de teste, foram testados hiperparâmetros de pré-poda na avaliação da árvore, sem obter nenhum resultado melhor.
 
 \subsubsection{Regressão Linear}
-Devido a ausência de hiperparâmetros, não foi realizada uma nova análise do modelo de regressão linear.
+Devido à ausência de hiperparâmetros, não foi realizada uma nova análise do modelo de Regressão Linear nesta etapa do trabalho.
 
-Os testes podem ser resumidos na seguinte tabela.
+\subsection{Resultados da Otimização}
 
-\noindent
-\begin{tabular}{|>{\centering\arraybackslash}m{0.2\linewidth}|>{\centering\arraybackslash}m{0.05\linewidth}|>{\centering\arraybackslash}m{0.55\linewidth}|>{\centering\arraybackslash}m{0.2\linewidth}|}
-    \hline
-    \textbf{Modelo} & \textbf{Iter} & \textbf{best\_param} & \textbf{Pontuação} \\ [0.5ex]
-    \hline
-    \textbf{Redes Neurais} & \textbf{1} & \textbf{hidden\_layer\_sizes = (100,)}, \textbf{solver = adam}, \textbf{early\_stopping = True} & -7.7895\\ 
-    \hline
-    \textbf{Redes Neurais} & \textbf{2} & \textbf{hidden\_layer\_sizes = (25, 50, 25)}, \textbf{solver = lbfgs}, \textbf{early\_stopping = False} & -4.5575\\  
-    \hline
-    \textbf{Redes Neurais} & \textbf{3} & \textbf{hidden\_layer\_sizes = (25, 50, 25)}, \textbf{solver = lbfgs}, \textbf{early\_stopping = False} & -4.4675\\  
-    \hline
-    \textbf{Random Forest} & \textbf{1} & \textbf{n\_estimators = 400}, \textbf{ccp\_alpha = 0} & -3.1145\\ [1ex] 
-    \hline
-    \textbf{Random Forest} & \textbf{2} & \textbf{n\_estimators = 400}, \textbf{ccp\_alpha = 0} & -3.1145\\[1ex]
-    \hline
-\end{tabular}
+Os resultados desta etapa podem ser resumidos na seguinte tabela:
+
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{| c | c | M{58mm} | c |}
+      \hline
+      \rowcolor{lightgray}
+      \textbf{Modelo} & \textbf{Iteração} & \textbf{Melhores Parâmetros} & \textbf{Pontuação} \\
+      \hline
+      Redes Neurais & 1 & \texttt{hidden\_layer\_sizes} = (100), \newline \texttt{solver} = \texttt{adam}, \newline \texttt{early\_stopping} = \texttt{True} & -7,7895 \\
+      \hline
+      Redes Neurais & 2 & \texttt{hidden\_layer\_sizes} = (25, 50, 25), \newline \texttt{solver} = \texttt{lbfgs}, \newline \texttt{early\_stopping} = \texttt{False} & -4,4675 \\
+      \hline
+      \textit{Random Forest} & 1 & \texttt{n\_estimators} = 400, \newline \texttt{ccp\_alpha} = 0 & -3,1145 \\
+      \hline
+      \textit{Random Forest} & 2 & \texttt{n\_estimators} = 400, \newline \texttt{ccp\_alpha} = 0 & -3,1145 \\
+      \hline
+  \end{tabular}
+  \caption{\label{table:optimization_summary} Resumo das Otimização de Hiperparâmetros}
+\end{table}
+
+Devido às métricas disponibilizadas pelo \texttt{GridSearchCV()}, obteve-se pontuações negativas que continuam tendo módulo igual ao MSE utilizado anteriormente.
+
+Além disso, percebe-se uma queda nos resultados aqui quando comparado com os resultados obtidos na seção \ref{sec:spot_checking}. Isso é devido a não imputação dos dados com categorias
+únicas a cada iteração do processo de otimização (algo que não é possível com esse método), resultando em pontuações mais variadas. No entanto, para comparação entre os modelos de mesmo
+tipo, essas métricas já são válidas.
 
 \section{Comparação de Desempenhos em Dados de Teste}
 Devido à quantidade pequena de dados no conjunto de dados, foi escolhido fazer uma divisão dos dados utilizando 5-folds para determinação dos melhores hiperparâmetros, para então determinar o melhor desempenho global obtido pelos modelos de \textit{Redes-neurais}, \textit{Random Forest} e \textit{Regressão Linear} com os hiperparâmetros obtidos do capítulo \ref{sec: 5.1}.

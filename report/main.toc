@@ -10,9 +10,13 @@
 \contentsline {subsection}{\numberline {4.1.2}Sumarização dos Resultados}{8}{subsection.0.4.2}%
 \contentsline {section}{\numberline {5.1}Otimização de Hiperparâmetros}{9}{section.0.5}%
 \contentsline {subsection}{\numberline {5.1.1}Análise dos Hiperparâmetros Possíveis}{9}{subsection.0.5.1}%
-\contentsline {subsubsection}{Redes-neurais}{9}{subsubsection*.10}%
-\contentsline {subsubsection}{Random Forest}{9}{subsubsection*.11}%
+\contentsline {subsubsection}{Redes Neurais}{9}{subsubsection*.10}%
+\contentsline {subsubsection}{\textit {Random Forest}}{9}{subsubsection*.11}%
 \contentsline {subsubsection}{Regressão Linear}{10}{subsubsection*.12}%
+\contentsline {subsection}{\numberline {5.1.2}Resultados da Otimização}{10}{subsection.0.5.2}%
 \contentsline {section}{\numberline {6.1}Comparação de Desempenhos em Dados de Teste}{11}{section.0.6}%
-\contentsline {section}{\numberline {7.1}Interpretação do Melhor Modelo}{12}{section.0.7}%
-\contentsline {section}{\numberline {8.1}Conclusões Finais}{13}{section.0.8}%
+\contentsline {section}{\numberline {7.1}Interpretação do Modelo}{12}{section.0.7}%
+\contentsline {subsection}{\numberline {7.1.1}Obtenção dos Coeficientes}{12}{subsection.0.7.1}%
+\contentsline {subsection}{\numberline {7.1.2}Resultados}{12}{subsection.0.7.2}%
+\contentsline {subsection}{\numberline {7.1.3}Análise dos Resultados}{12}{subsection.0.7.3}%
+\contentsline {section}{\numberline {8.1}Conclusões Finais}{14}{section.0.8}%
