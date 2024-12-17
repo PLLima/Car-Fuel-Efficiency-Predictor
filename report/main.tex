@@ -219,15 +219,15 @@ Com esses dados revisitados, a seguir seguem os resultados obtidos pelos modelos
       \rowcolor{lightgray}
       \textbf{Modelo} & \textbf{Média dos MSE} & \textbf{Desvio Padrão dos MSE} \\
       \hline
-      kNN & 3,3227 & 1,3120 \\
+      kNN & 3,0441 & 1,3395 \\
       \hline
-      \textit{Random Forest} & 1,8084 & 1,0998 \\
+      \textit{Random Forest} & 1,8041 & 1,0449 \\
       \hline
-      Regressão Linear & 1,4442 & 0,5086 \\
+      Regressão Linear & 1,5499 & 0,5309 \\
       \hline
-      Redes Neurais & 1,1889 & 0,4046 \\
+      Redes Neurais & 1,1892 & 0,5091 \\
       \hline
-      SVM & 3,9311 & 1,6636 \\
+      SVM & 4,1961 & 2,0285 \\
       \hline
   \end{tabular}
   \caption{\label{table:model_summary} Médias e Desvios Padrões dos MSE}
@@ -236,16 +236,16 @@ Com esses dados revisitados, a seguir seguem os resultados obtidos pelos modelos
 \begin{figure}[h!]
   \centering
   \includegraphics[width=.85\linewidth]{images/plots/box_plots/mse.png}
-  \caption{\label{img:mse_boxplot} \textit{Box Plot} dos MSE}
+  \caption{\label{img:mse_boxplot}\textit{Box Plot} dos MSE}
 \end{figure}
 
-Por fim, com esses resultados, mesmo que os resultados não sejam reproduzíveis exatamente com os mesmos valores a cada vez que o código é executado, fica claro que os 3 modelos mais promissores foram
+Por fim, com esses resultados, fica claro que os 3 modelos mais promissores foram
 a \textbf{\textit{Random Forest}}, a \textbf{Regressão Linear} e as \textbf{Redes Neurais}. Como nenhum atributo foi otimizado, pode ser que os outros dois modelos se desempenhassem melhor, porém, com
 as configurações básicas de hiperparâmetros, esses foram os três mais promissores.
 
 Dentre esses, fica claro que os mais eficientes nesta tarefa foram o algoritmo de Regressão Linear e o modelo de Redes Neurais, visto que os erros da \textit{Random Forest} são mais elevados no geral quando
-comparado com esses últimos dois. Mesmo que as Redes Neurais apresentem média e desvio padrão melhores do que a Regressão Linear, o \textit{box plot} acima reforça que o viés do erro da Regressão Linear é um
-pouco mais concentrado, próximo de um valor estável para este teste. Por conta dessas razões, serão aprofundados a \textit{Random Forest}, o Regressor Linear e as Redes Neurais, com enfase nos últimos dois.
+comparado com esses últimos dois. Mesmo que as Redes Neurais apresentem média e desvio padrão melhores do que a Regressão Linear, o \textit{box plot} acima reforça que o viés do erro da Regressão Linear é também
+muito estável para este teste. Por conta dessas razões, serão aprofundados a \textit{Random Forest}, o Regressor Linear e as Redes Neurais, com enfase nos últimos dois.
 
 \section{Otimização de Hiperparâmetros} \label{sec: 5.1}
 
