@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
@@ -33,15 +34,14 @@ def plot_corr_heatmap(dataset, title, filename):
     plt.title(title)
     plt.savefig(f'plots/heatmaps/{filename}.png')
 
-def plot_scatterplot(model, modelname, y_pred, y_test, title, filename):
+def plot_residuals(residuals_train, residuals_test, y_train, y_test, title, filename):
+    df = {
+        'Predições': pd.concat(y_train, y_test),
+        'Resíduos': pd.concat(residuals_train, residuals_test),
+        'Dataset': ['Treinamento'] * len(y_train) + ['Teste'] * len(y_test)
+    }
     plt.figure(figsize=(10, 6))
-    plt.scatter(y_test, y_pred, color='blue', alpha=0.6, label=title)
-    plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 'k--', lw=2, label='Linha de Ajuste Ideal')
-    plt.xlabel('Consumo Médio Real')
-    plt.ylabel('Consumo Médio Predito')
-    plt.title(f'{model.upper()} {modelname}: Predições vs. Consumo Médio Real')
-    plt.legend()
-    plt.grid(True)
+    plt.scatter(data=df, x='Resíduos', y='Predições', hue='Dataset', style='Dataset', label=title)
     plt.savefig(f'plots/scatter_plots/{filename}.png')
 
 def plot_MSEs(random_forest_mse, linear_regression_mse, neural_networks_mse):
