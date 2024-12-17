@@ -41,7 +41,7 @@ def plot_residuals(residuals_train, residuals_test, y_train, y_test, title, file
         'Dataset': ['Treinamento'] * len(y_train) + ['Teste'] * len(y_test)
     }
     plt.figure(figsize=(10, 6))
-    plt.scatter(data=df, x='Resíduos', y='Predições', hue='Dataset', style='Dataset', label=title)
+    sns.scatterplot(data=df, x='Resíduos', y='Predições', hue='Dataset', style='Dataset', label=title)
     plt.savefig(f'plots/scatter_plots/{filename}.png')
 
 def plot_MSEs(random_forest_mse, linear_regression_mse, neural_networks_mse):
