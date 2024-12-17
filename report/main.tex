@@ -372,7 +372,7 @@ Resultando na seguinte tabela das pontuações de cada modelo, utilizando a mét
       \hline
       Regressão Linear & 0,4536 & 1,6111 \\
       \hline
-      Redes Neurais & 0,03381 & 2,2666 \\
+      Redes Neurais & 0,0213 & 3,2236 \\
       \hline
   \end{tabular}
   \caption{\label{table:test_summary} Resumo dos Testes dos Modelos}
@@ -383,16 +383,35 @@ Percebe-se que o melhor modelo encontrado para o problema foi o \textbf{Regresso
 É possível observar, comparando os \textit{MSE} de teste e treinamento dos três modelos, que eles sofreram com um pouco de \textit{overfitting},
 caracterizado por um desempenho muito bom no conjunto de treinamento e desempenho não muito satisfatório para o conjunto de teste, com as Redes Neurais sendo as mais afetadas.
 
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=.85\linewidth]{images/plots/scatterplots/random_forest_residuals.png}
+  \caption{\label{img:rf_residuals} \textit{Scatter Plot} dos Residuos da \textit{Random Forest}}
+\end{figure}
+
 As vantagens da \textit{Random Forest} moram na sua capacidade de gerar diversos modelos de Árvores de Decisão (nesse caso, 400 delas), cada uma treinada nas fraquezas das outras.
 Isso tende a diminuir o \textit{overfitting} dessas árvores individuais e atinge resultados estatísticamente muito bons. Por outro lado, para esse problema, é bem possível que a sua
-complexidade tenha sido um pouco acima do necessário;
+complexidade tenha sido um pouco acima do necessário. O gráfico acima corrobora essa análise, acrescentando que os exemplos que esse modelo mais sofreu para avaliar moram em torno do
+meio do conjunto de dados (22,5 a 27mpg).
 
-As Redes Neurais são amplamente utilizadas por representarem modelos muito versáteis e poderosos para lidar com os mais complexos problemas. Por outro lado, elas apresentam
-\textit{overfitting} elevado, tendo um desempenho muito bom no conjunto de treinamento e desempenho muito pobre para o conjunto de teste em diversos problemas. Neste caso, foi bem o fenômeno
-observado.
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=.85\linewidth]{images/plots/scatterplots/neural_networks_residuals.png}
+  \caption{\label{img:nn_residuals} \textit{Scatter Plot} dos Residuos das Redes Neurais}
+\end{figure}
 
-O Regressor Linear, apesar de ter apresentado o pior desempenho
-no conjunto de treinamento, apresentou o maior desempenho para o conjunto de testes, demonstrando um ponto positivo da simplicidade de sua implementação: a capacidade de generalizar.
+As Redes Neurais são amplamente utilizadas por representarem modelos muito versáteis e poderosos para lidar com os mais complexos problemas. Por outro lado, como bem ilustrado pelo gráfico, elas apresentam
+\textit{overfitting} elevado, tendo um desempenho muito bom no conjunto de treinamento e desempenho muito pobre para o conjunto de teste em diversos problemas. As Redes Neurais tiveram dificuldade tremenda
+com os mesmos exemplos que complicaram as predições da \textit{Random Forest}, alem de serem mais complexas e mais difíceis de entender e interpretar.
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=.85\linewidth]{images/plots/scatterplots/linear_regressor_residuals.png}
+  \caption{\label{img:lr_residuals} \textit{Scatter Plot} dos Residuos do Regressor Linear}
+\end{figure}
+
+Observando o gráfico, o erro do Regressor Linear é geralmente menor que o dos outros modelos, apesar de apresentar maior oscilação. Embora tenha apresentado o pior desempenho no conjunto de treinamento, foi
+o melhor no conjunto de testes, demonstrando a capacidade de generalização, mesmo com a mais simples implementação.
 
 \section{Interpretação do Modelo}
 
