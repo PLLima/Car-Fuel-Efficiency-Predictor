@@ -110,7 +110,7 @@ def optimize_hyperparameters(method, X_train, y_train, kfolds, random_state):
     return clf.best_params_, clf.best_score_
 
 def difference_squared(y_true, y_pred):
-    difference = [y_true, y_pred]
+    difference = [y_true - y_pred]
     return [element ** 2 for element in difference]
 
 def final_training(X_opt, y_opt, model):
