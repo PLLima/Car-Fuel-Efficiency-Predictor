@@ -467,8 +467,8 @@ com gráficos feitos por pesquisas independentes nos permite avaliar o quão rea
     \end{minipage}
 \end{figure}
 
-O gráfico \ref{fig: MPGpCylinder} mostra que o consumo aumenta em média 4mpg a cada cilindro, enquanto o gráfico \ref{fig: MPGbyYear}
-mostra que em 15 anos, ocorreu um aumento de 30\% da eficiência dos combustíveis em carros, o que resulta em aproximadamente 0,5mpg ao ano,
+O gráfico \ref{fig: MPGpCylinder} (adivindo de \cite{CylinderXMPG}) mostra que o consumo aumenta em média 4mpg a cada cilindro, enquanto o gráfico \ref{fig: MPGbyYear}
+(cuja referência é \cite{YearXMPG}) mostra que em 15 anos, ocorreu um aumento de 30\% da eficiência dos combustíveis em carros, o que resulta em aproximadamente 0,5mpg ao ano,
 o que corrobora os achados do modelo interpretado, onde o coeficiente atribuído ao número de cilindros é 8 vezes mais importante que aquele ao ano,
 portanto, enquanto a eficiência aumenta a cada ano, ela diminui a cada cilindro do veículo.
 
@@ -480,14 +480,20 @@ variável dependente, quanto devido ao modelo utilizado para juntar os coeficien
 dimensionalidade que trazem para o problema, considerando que algumas categorias foram separadas em centenas pelo \textit{Encoder}, diminuindo sua relevância preditiva.
 
 \section{Conclusões Finais}
-Apesar do resultado ser satisfatório, a eficiência do preditor poderia ser melhorada utilizando estratificação no conjunto de treinamento, validação e teste, porém, o conjunto misto de dados numéricos e categóricos impediu o uso do parâmetro \textit{stratify} do \textit{train\_test\_split}, por tentar manter a distribuição de números raros e infrequentes das categorias numéricas nos conjuntos de treino e teste. A observabilidade poderia ser melhorada utilizando métodos para junção dos coeficientes categóricos mais adequados que a soma, como por exemplo, uma média ponderada de todos os coeficientes, ou um \textit{box plot} que demonstre o valor médio e o desvio de todos os coeficientes dentro de cada categoria.
-Apesar destas dificuldades, o modelo de Regressão Linear mostrou-se muito capaz de adaptação ao problema de predição de consumo de combustível, apesar da sua simplicidade. Como visto na subseção \ref{subsec: analiseresultados}, o modelo é facilmente observável, permitindo afirmar que o modelo foi capaz de identificar padrões reais do problema utilizando somente as \textit{features} numéricas, classificando novos casos com precisão e superando modelos mais complexos e vulneráveis a \textit{overfitting}.
+Apesar do resultado ser satisfatório, a eficiência do preditor poderia ser melhorada utilizando estratificação no conjunto de treinamento, validação e teste. Essa estratificação
+deveria ser feita para as categorias dos atributos categóricos e foi feito de forma precária no início do trabalho, na etapa de pré-processamento. Gostar-se-ia de fazer isso de forma
+mais generalizada para aplicar facilmente a todas as etapas de construção dos modelos. O problema adveio do conjunto misto de dados numéricos e categóricos, impedindo o uso do parâmetro
+\texttt{stratify} do método \texttt{train\_test\_split()}, por tentar manter a distribuição de números raros e infrequentes das categorias numéricas nos conjuntos de treinamento e teste.
+Essa seria uma importante melhoria para obter melhores resultados futuros com este trabalho.
 
+A interpretabilidade poderia ser melhorada utilizando métodos para junção dos coeficientes categóricos mais adequados que a simples soma, como por exemplo, uma média ponderada de todos os
+coeficientes, ou um \textit{box plot} que demonstre o valor médio e o desvio de todos os coeficientes dentro de cada categoria. Apesar dessas dificuldades, o modelo de Regressão Linear
+mostrou-se muito capaz de se adaptar a esse problema de predição de consumo de combustível, apesar da sua simplicidade. Como visto na subseção \ref{subsec: analiseresultados}, o modelo
+é facilmente interpretável, permitindo afirmar que o modelo foi capaz de identificar padrões reais do problema utilizando somente as \textit{features} numéricas, classificando novos casos
+com precisão e superando modelos mais complexos e vulneráveis a \textit{overfitting}.
 
-FAZER REFERENCIA DOS GRAFICOS, %https://www.researchgate.net/figure/Multiple-plots-showing-a-relation-between-the-number-of-cylinders-vs-gas-mileage-MPG_fig1_319328127
-%https://www.energy.gov/eere/vehicles/articles/fotw-1177-march-15-2021-preliminary-data-show-average-fuel-economy-new-light
-FAZER REFERENCIA DOS SITES DO SCIKIT LEARN QUE TIRAMOS OS PARAMETROS, SÃO OS DOIS ÚLTIMOS DA BIBLIOGRAFIA 
-
+Para o futuro do projeto, seria interessante buscar uma maior semântica nesse conjunto de dados além do consumo puramente por modelo e marca do veículo. Poder-se-ia, por exemplo, encontrar
+padrões entre os veículos de um país ou de uma região específica para encontrar mais uma característica que pode ter razões geográficas ou até culturais.
 
 \clearpage
 \printbibliography

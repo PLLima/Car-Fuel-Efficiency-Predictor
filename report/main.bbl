@@ -159,6 +159,25 @@
       \field{title}{{Building a Linear Regression model with Scikit-Learn — Part — 1}}
       \field{year}{2022}
     \endentry
+    \entry{CylinderXMPG}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=eb2dd7d2f634427ba3df3b60226b9049}{%
+           family={{Niklas Elmqvist}},
+           familyi={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{eb2dd7d2f634427ba3df3b60226b9049}
+      \strng{fullhash}{eb2dd7d2f634427ba3df3b60226b9049}
+      \strng{bibnamehash}{eb2dd7d2f634427ba3df3b60226b9049}
+      \strng{authorbibnamehash}{eb2dd7d2f634427ba3df3b60226b9049}
+      \strng{authornamehash}{eb2dd7d2f634427ba3df3b60226b9049}
+      \strng{authorfullhash}{eb2dd7d2f634427ba3df3b60226b9049}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Website available: \url{https://www.researchgate.net/figure/Multiple-plots-showing-a-relation-between-the-number-of-cylinders-vs-gas-mileage-MPG_fig1_319328127}}
+      \field{title}{{Number of Cylinder Vs. MPG}}
+    \endentry
     \entry{MSEAndMAE}{misc}{}
       \name{author}{1}{}{%
         {{hash=4f23d08d81c10a205f95139e9cdf6eec}{%
@@ -257,6 +276,25 @@
       \field{labeltitlesource}{title}
       \field{note}{Website available: \url{https://www.turing.com/kb/how-to-choose-an-activation-function-for-deep-learning}}
       \field{title}{{How to Choose an Activation Function For Deep Learning}}
+    \endentry
+    \entry{YearXMPG}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=7f6cd5b5b184ad5dcf66198edda1fe77}{%
+           family={{US Department of Energy}},
+           familyi={U\bibinitperiod}}}%
+      }
+      \strng{namehash}{7f6cd5b5b184ad5dcf66198edda1fe77}
+      \strng{fullhash}{7f6cd5b5b184ad5dcf66198edda1fe77}
+      \strng{bibnamehash}{7f6cd5b5b184ad5dcf66198edda1fe77}
+      \strng{authorbibnamehash}{7f6cd5b5b184ad5dcf66198edda1fe77}
+      \strng{authornamehash}{7f6cd5b5b184ad5dcf66198edda1fe77}
+      \strng{authorfullhash}{7f6cd5b5b184ad5dcf66198edda1fe77}
+      \field{sortinit}{U}
+      \field{sortinithash}{6901a00e45705986ee5e7ca9fd39adca}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Website available: \url{https://www.energy.gov/eere/vehicles/articles/fotw-1177-march-15-2021-preliminary-data-show-average-fuel-economy-new-light}}
+      \field{title}{{Preliminary Data Show Average Fuel Economy of New...}}
     \endentry
   \enddatalist
 \endrefsection
